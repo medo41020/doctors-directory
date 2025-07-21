@@ -1,0 +1,639 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>الغدد الصماء - قنا</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #f0f9ff, #e6f7ff);
+      color: #1a3c5a;
+      line-height: 1.7;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 850px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 12px 35px rgba(25, 118, 210, 0.15);
+      overflow: hidden;
+      padding: 30px;
+      position: relative;
+      border: 1px solid rgba(25, 118, 210, 0.1);
+    }
+    
+    .container::before {
+      content: "";
+      position: absolute;
+      top: -10px;
+      left: -10px;
+      right: -10px;
+      bottom: -10px;
+      background: linear-gradient(45deg, #2196f3, #21cbf3, #2196f3);
+      z-index: -1;
+      border-radius: 25px;
+      opacity: 0.05;
+    }
+    
+    header {
+      text-align: center;
+      padding: 30px 0;
+      margin-bottom: 25px;
+      background: linear-gradient(120deg, #1976d2, #0d47a1);
+      border-radius: 15px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(25, 118, 210, 0.3);
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+    }
+    
+    h2 {
+      font-size: 2.5rem;
+      margin-bottom: 15px;
+      text-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .subtitle {
+      font-size: 1.2rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin: 0 auto;
+      padding: 0 20px;
+      line-height: 1.6;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: linear-gradient(135deg, #e3f2fd, #bbdefb);
+      border-radius: 15px;
+      padding: 20px 25px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(33, 150, 243, 0.15);
+      min-width: 150px;
+      border: 1px solid rgba(33, 150, 243, 0.2);
+      transition: transform 0.3s;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(33, 150, 243, 0.25);
+    }
+    
+    .stat-card .number {
+      font-size: 2rem;
+      font-weight: bold;
+      color: #0d47a1;
+      margin-bottom: 5px;
+    }
+    
+    .stat-card .label {
+      font-size: 1rem;
+      color: #1a237e;
+      font-weight: 600;
+    }
+    
+    .search-container {
+      background: #e3f2fd;
+      padding: 20px;
+      border-radius: 15px;
+      margin: 30px 0;
+      box-shadow: 0 5px 15px rgba(33, 150, 243, 0.1);
+      border: 1px solid rgba(33, 150, 243, 0.2);
+    }
+    
+    .search-box {
+      display: flex;
+      max-width: 100%;
+      height: 60px;
+    }
+    
+    .search-box input {
+      flex: 1;
+      padding: 0 25px;
+      border: 2px solid #1976d2;
+      border-radius: 50px 0 0 50px;
+      font-size: 1.1rem;
+      outline: none;
+      background: white;
+      box-shadow: inset 0 2px 8px rgba(0, 0, 0, 0.08);
+    }
+    
+    .search-box button {
+      background: linear-gradient(to right, #1976d2, #2196f3);
+      color: white;
+      border: none;
+      padding: 0 35px;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-weight: 600;
+      box-shadow: 0 4px 10px rgba(33, 150, 243, 0.4);
+    }
+    
+    .search-box button:hover {
+      background: linear-gradient(to right, #1565c0, #1976d2);
+      box-shadow: 0 6px 12px rgba(33, 150, 243, 0.5);
+    }
+    
+    .doctor-list {
+      margin-top: 40px;
+    }
+    
+    .doctor-card {
+      background: linear-gradient(to right, #ffffff, #f5fbff);
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(33, 150, 243, 0.15);
+      padding: 25px;
+      margin-bottom: 30px;
+      text-align: right;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-left: 5px solid #2196f3;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .doctor-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: linear-gradient(135deg, rgba(33, 150, 243, 0.03), rgba(25, 118, 210, 0.05));
+      z-index: 0;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(33, 150, 243, 0.25);
+    }
+    
+    .doctor-name {
+      color: #0d47a1;
+      font-weight: bold;
+      font-size: 1.6rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 15px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .doctor-name::before {
+      content: "🌡️";
+      font-size: 1.5rem;
+      background: #e3f2fd;
+      width: 50px;
+      height: 50px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.2);
+    }
+    
+    .doctor-address {
+      font-size: 1.1rem;
+      color: #1a3c5a;
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 2px dashed #bbdefb;
+      line-height: 1.8;
+      position: relative;
+      z-index: 1;
+      padding-right: 15px;
+    }
+    
+    .doctor-address i {
+      color: #1976d2;
+      margin-left: 8px;
+    }
+    
+    .phone-container {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 15px;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .phone-number {
+      font-size: 1.2rem;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #e3f2fd;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid #bbdefb;
+      flex: 1;
+      min-width: 250px;
+      font-weight: 600;
+      color: #0d47a1;
+      box-shadow: 0 4px 8px rgba(25, 118, 210, 0.1);
+    }
+    
+    .phone-number::before {
+      content: "📞";
+      font-size: 1.3rem;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 15px;
+    }
+    
+    .call-btn, .copy-btn {
+      border: none;
+      border-radius: 12px;
+      padding: 12px 25px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+    }
+    
+    .call-btn {
+      background: linear-gradient(to right, #1976d2, #2196f3);
+      color: #fff;
+    }
+    
+    .call-btn:hover {
+      background: linear-gradient(to right, #1565c0, #1976d2);
+      box-shadow: 0 6px 12px rgba(33, 150, 243, 0.4);
+    }
+    
+    .copy-btn {
+      background: linear-gradient(to right, #455a64, #37474f);
+      color: #fff;
+    }
+    
+    .copy-btn:hover {
+      background: linear-gradient(to right, #37474f, #263238);
+      box-shadow: 0 6px 12px rgba(55, 71, 79, 0.4);
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px 0 15px;
+      margin-top: 40px;
+      color: #546e7a;
+      font-size: 1rem;
+      border-top: 2px solid #e3f2fd;
+      position: relative;
+      z-index: 1;
+    }
+    
+    .features {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    
+    .feature-card {
+      background: white;
+      border-radius: 15px;
+      padding: 20px;
+      width: 200px;
+      text-align: center;
+      box-shadow: 0 6px 15px rgba(33, 150, 243, 0.1);
+      border: 1px solid rgba(33, 150, 243, 0.1);
+      transition: transform 0.3s;
+    }
+    
+    .feature-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(33, 150, 243, 0.15);
+    }
+    
+    .feature-card i {
+      font-size: 2.5rem;
+      color: #1976d2;
+      margin-bottom: 15px;
+    }
+    
+    .feature-card h3 {
+      color: #0d47a1;
+      margin-bottom: 10px;
+    }
+    
+    .feature-card p {
+      color: #546e7a;
+      font-size: 0.95rem;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+        border-radius: 15px;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .subtitle {
+        font-size: 1rem;
+      }
+      
+      .stat-card {
+        padding: 15px;
+        min-width: 120px;
+      }
+      
+      .stat-card .number {
+        font-size: 1.5rem;
+      }
+      
+      .doctor-card {
+        padding: 20px;
+      }
+      
+      .doctor-name {
+        font-size: 1.4rem;
+      }
+      
+      .phone-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .call-btn, .copy-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 12px 10px;
+        font-size: 0.95rem;
+      }
+      
+      .search-box {
+        height: 50px;
+      }
+      
+      .search-box input {
+        padding: 0 15px;
+        font-size: 1rem;
+      }
+      
+      .search-box button {
+        padding: 0 20px;
+        font-size: 1rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2><i class="fas fa-heartbeat"></i> أطباء الغدد الصماء في قنا</h2>
+      <p class="subtitle">الدليل الشامل لأطباء الغدد الصماء والسكري في محافظة قنا مع وسائل الاتصال المباشر</p>
+    </header>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="number">4</div>
+        <div class="label">أطباء متخصصون</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">4</div>
+        <div class="label">أرقام اتصال</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">4</div>
+        <div class="label">مواقع متاحة</div>
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن طبيب بالاسم أو العنوان...">
+        <button id="searchBtn"><i class="fas fa-search"></i> بحث</button>
+      </div>
+    </div>
+    
+    <div class="features">
+      <div class="feature-card">
+        <i class="fas fa-user-md"></i>
+        <h3>أطباء متخصصون</h3>
+        <p>خبراء في علاج أمراض الغدد والسكري</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-phone-alt"></i>
+        <h3>اتصال مباشر</h3>
+        <p>اتصل بالطبيب بنقرة واحدة</p>
+      </div>
+      <div class="feature-card">
+        <i class="fas fa-map-marker-alt"></i>
+        <h3>مواقع دقيقة</h3>
+        <p>عناوين مفصلة للعيادات</p>
+      </div>
+    </div>
+    
+    <div class="doctor-list">
+      <!-- طبيب 1 -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ غادة عبد الرحمن الخطيب</p>
+        <p class="doctor-address"><i class="fas fa-map-marker-alt"></i> قنا - شارع 23 يوليو - أمام جامع التحرير</p>
+        <div class="phone-container">
+          <span class="phone-number">01001142529</span>
+          <div class="actions">
+            <a href="tel:01001142529" class="call-btn"><i class="fas fa-phone-alt"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01001142529')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- طبيب 2 -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ محمد عباس القوصي</p>
+        <p class="doctor-address"><i class="fas fa-map-marker-alt"></i> قنا - بجوار الأحوال المدنية - أعلى محل فان دوقي</p>
+        <div class="phone-container">
+          <span class="phone-number">01090998294</span>
+          <div class="actions">
+            <a href="tel:01090998294" class="call-btn"><i class="fas fa-phone-alt"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01090998294')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- طبيب 3 -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ طارق فتوحي</p>
+        <p class="doctor-address"><i class="fas fa-map-marker-alt"></i> قنا - مركز الرازي الطبي</p>
+        <div class="phone-container">
+          <span class="phone-number">0963345074</span>
+          <div class="actions">
+            <a href="tel:0963345074" class="call-btn"><i class="fas fa-phone-alt"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0963345074')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- طبيب 4 -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ كيرلس فوزي كامل</p>
+        <p class="doctor-address"><i class="fas fa-map-marker-alt"></i> نجع حمادي - شارع معمل دار يوسف - خلف البدري للعصائر</p>
+        <div class="phone-container">
+          <span class="phone-number">01554314326</span>
+          <div class="actions">
+            <a href="tel:01554314326" class="call-btn"><i class="fas fa-phone-alt"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01554314326')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>© 2025 دليل أطباء الغدد الصماء في قنا | تم التحديث في يوليو 2025</p>
+      <p>جميع المعلومات مقدمة كمرجع عام ولا تغني عن الاستشارة الطبية المتخصصة</p>
+    </footer>
+  </div>
+  
+  <script>
+    // دالة نسخ الرقم
+    function copyNumber(number) {
+      navigator.clipboard.writeText(number).then(() => {
+        const alertBox = document.createElement('div');
+        alertBox.textContent = 'تم نسخ الرقم: ' + number;
+        alertBox.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #4CAF50;
+          color: white;
+          padding: 15px 25px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 1000;
+          animation: fadeInOut 2.5s ease;
+          font-weight: bold;
+        `;
+        
+        document.body.appendChild(alertBox);
+        
+        setTimeout(() => {
+          alertBox.style.animation = 'fadeOut 0.5s ease forwards';
+          setTimeout(() => document.body.removeChild(alertBox), 500);
+        }, 2000);
+      });
+    }
+    
+    // وظيفة البحث
+    document.getElementById('searchBtn').addEventListener('click', searchDoctors);
+    document.getElementById('searchInput').addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        searchDoctors();
+      }
+    });
+    
+    function searchDoctors() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const doctorCards = document.querySelectorAll('.doctor-card');
+      let found = false;
+      
+      doctorCards.forEach(card => {
+        const name = card.querySelector('.doctor-name').textContent.toLowerCase();
+        const address = card.querySelector('.doctor-address').textContent.toLowerCase();
+        
+        if (name.includes(searchTerm) || address.includes(searchTerm)) {
+          card.style.display = 'block';
+          found = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (!found && searchTerm) {
+        const alertBox = document.createElement('div');
+        alertBox.textContent = 'لم يتم العثور على أطباء يطابقون بحثك';
+        alertBox.style.cssText = `
+          position: fixed;
+          top: 20px;
+          right: 20px;
+          background: #f44336;
+          color: white;
+          padding: 15px 25px;
+          border-radius: 10px;
+          box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+          z-index: 1000;
+          animation: fadeInOut 2.5s ease;
+          font-weight: bold;
+        `;
+        
+        document.body.appendChild(alertBox);
+        
+        setTimeout(() => {
+          alertBox.style.animation = 'fadeOut 0.5s ease forwards';
+          setTimeout(() => document.body.removeChild(alertBox), 500);
+        }, 2500);
+      }
+    }
+    
+    // إضافة أنيميشن
+    const style = document.createElement('style');
+    style.innerHTML = `
+      @keyframes fadeInOut {
+        0% { opacity: 0; transform: translateY(-20px); }
+        10% { opacity: 1; transform: translateY(0); }
+        90% { opacity: 1; transform: translateY(0); }
+        100% { opacity: 0; transform: translateY(-20px); }
+      }
+      @keyframes fadeOut {
+        to { opacity: 0; transform: translateY(-20px); }
+      }
+    `;
+    document.head.appendChild(style);
+  </script>
+</body>
+</html>

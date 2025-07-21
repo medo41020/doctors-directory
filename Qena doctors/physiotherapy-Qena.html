@@ -1,0 +1,758 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>دليل العلاج الطبيعي في قنا</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+        
+        body {
+            background: linear-gradient(135deg, #f0f9ff, #e6f7ff);
+            color: #333;
+            line-height: 1.7;
+            padding: 20px;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1000px;
+            margin: 0 auto;
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+        }
+        
+        header {
+            text-align: center;
+            padding: 30px 20px;
+            background: linear-gradient(120deg, #38b2ac, #2e856e);
+            color: white;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        header::before {
+            content: "";
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+            transform: rotate(30deg);
+        }
+        
+        h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+        }
+        
+        .subtitle {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 600px;
+            margin: 0 auto 15px;
+        }
+        
+        .stats-container {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin: 20px 0;
+            flex-wrap: wrap;
+        }
+        
+        .stat-card {
+            background: rgba(255, 255, 255, 0.2);
+            border-radius: 12px;
+            padding: 15px 20px;
+            text-align: center;
+            min-width: 150px;
+            backdrop-filter: blur(5px);
+            border: 1px solid rgba(255, 255, 255, 0.3);
+        }
+        
+        .stat-card .number {
+            font-size: 1.8rem;
+            font-weight: bold;
+        }
+        
+        .stat-card .label {
+            font-size: 0.95rem;
+        }
+        
+        .tabs {
+            display: flex;
+            background: #edf2f7;
+            padding: 10px 20px;
+            overflow-x: auto;
+            gap: 5px;
+        }
+        
+        .tab {
+            padding: 10px 20px;
+            background: white;
+            border-radius: 30px;
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+            white-space: nowrap;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .tab:hover, .tab.active {
+            background: #38b2ac;
+            color: white;
+            border-color: #38b2ac;
+        }
+        
+        .search-container {
+            background: #f8f9fa;
+            padding: 20px;
+            border-bottom: 1px solid #e2e8f0;
+        }
+        
+        .search-box {
+            display: flex;
+            max-width: 100%;
+            position: relative;
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 15px 20px;
+            border: 2px solid #38b2ac;
+            border-radius: 50px;
+            font-size: 1rem;
+            outline: none;
+            background: white;
+            padding-right: 50px;
+        }
+        
+        .search-box button {
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translateY(-50%);
+            background: #38b2ac;
+            color: white;
+            border: none;
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: background 0.3s;
+        }
+        
+        .search-box button:hover {
+            background: #319795;
+        }
+        
+        .main-content {
+            display: flex;
+            min-height: 500px;
+        }
+        
+        .sidebar {
+            width: 250px;
+            background: #f8f9fa;
+            border-right: 1px solid #e2e8f0;
+            padding: 20px;
+        }
+        
+        .sidebar h3 {
+            margin-bottom: 15px;
+            color: #2c7a7b;
+            padding-bottom: 10px;
+            border-bottom: 2px solid #e2e8f0;
+        }
+        
+        .specialty-list {
+            list-style: none;
+        }
+        
+        .specialty-list li {
+            padding: 12px 15px;
+            border-radius: 8px;
+            margin-bottom: 8px;
+            cursor: pointer;
+            transition: all 0.3s;
+            display: flex;
+            align-items: center;
+        }
+        
+        .specialty-list li i {
+            margin-left: 10px;
+            color: #38b2ac;
+        }
+        
+        .specialty-list li:hover, .specialty-list li.active {
+            background: #e6fffa;
+            color: #2c7a7b;
+            font-weight: 500;
+        }
+        
+        .doctor-list {
+            flex: 1;
+            padding: 20px;
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(350px, 1fr));
+            gap: 20px;
+            max-height: 600px;
+            overflow-y: auto;
+        }
+        
+        .doctor-card {
+            background: white;
+            border-radius: 15px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05);
+            padding: 20px;
+            transition: transform 0.3s, box-shadow 0.3s;
+            border-left: 4px solid #38b2ac;
+            position: relative;
+        }
+        
+        .doctor-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.1);
+        }
+        
+        .doctor-name {
+            color: #2d3748;
+            font-weight: bold;
+            font-size: 1.3rem;
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+        
+        .doctor-name i {
+            margin-left: 10px;
+            color: #38b2ac;
+        }
+        
+        .specialty-badge {
+            display: inline-block;
+            background: #e6fffa;
+            color: #2c7a7b;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.85rem;
+            margin-top: 5px;
+        }
+        
+        .doctor-address {
+            font-size: 1rem;
+            color: #4a5568;
+            margin: 15px 0;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #e2e8f0;
+            line-height: 1.6;
+        }
+        
+        .phone-container {
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            background: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 8px;
+            border: 1px solid #e2e8f0;
+        }
+        
+        .phone-number {
+            font-size: 1.1rem;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+            flex: 1;
+        }
+        
+        .actions {
+            display: flex;
+            gap: 8px;
+        }
+        
+        .call-btn, .copy-btn {
+            border: none;
+            border-radius: 8px;
+            padding: 8px 12px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            cursor: pointer;
+            display: inline-flex;
+            align-items: center;
+            gap: 5px;
+            transition: all 0.3s;
+        }
+        
+        .call-btn {
+            background: #38b2ac;
+            color: #fff;
+        }
+        
+        .call-btn:hover {
+            background: #319795;
+        }
+        
+        .copy-btn {
+            background: #4a5568;
+            color: #fff;
+        }
+        
+        .copy-btn:hover {
+            background: #2d3748;
+        }
+        
+        footer {
+            text-align: center;
+            padding: 25px;
+            color: #718096;
+            font-size: 0.9rem;
+            border-top: 1px solid #e2e8f0;
+            background: #f8f9fa;
+        }
+        
+        .new-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: #e53e3e;
+            color: white;
+            padding: 3px 10px;
+            border-radius: 20px;
+            font-size: 0.8rem;
+            font-weight: bold;
+        }
+        
+        .filter-section {
+            margin-top: 20px;
+            padding: 15px;
+            background: #edf2f7;
+            border-radius: 10px;
+        }
+        
+        .filter-section h4 {
+            margin-bottom: 10px;
+            color: #2c7a7b;
+        }
+        
+        .filter-options {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 10px;
+        }
+        
+        .filter-btn {
+            padding: 8px 15px;
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 20px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+        
+        .filter-btn:hover, .filter-btn.active {
+            background: #38b2ac;
+            color: white;
+            border-color: #38b2ac;
+        }
+        
+        .info-section {
+            padding: 20px;
+            background: #e6fffa;
+            border-radius: 10px;
+            margin: 20px 0;
+            border-left: 4px solid #38b2ac;
+        }
+        
+        .info-section h3 {
+            color: #2c7a7b;
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .info-section ul {
+            padding-right: 20px;
+        }
+        
+        .info-section li {
+            margin-bottom: 10px;
+            line-height: 1.6;
+        }
+        
+        @media (max-width: 768px) {
+            .main-content {
+                flex-direction: column;
+            }
+            
+            .sidebar {
+                width: 100%;
+                border-right: none;
+                border-bottom: 1px solid #e2e8f0;
+            }
+            
+            .doctor-list {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .stat-card {
+                min-width: 120px;
+                padding: 10px 15px;
+            }
+            
+            .phone-container {
+                flex-direction: column;
+                align-items: stretch;
+                gap: 10px;
+            }
+            
+            .actions {
+                width: 100%;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i> دليل مراكز العلاج الطبيعي في قنا</h1>
+            <p class="subtitle">الدليل الشامل لمراكز وأطباء العلاج الطبيعي في محافظة قنا مع وسائل الاتصال المباشر</p>
+            
+            <div class="stats-container">
+                <div class="stat-card">
+                    <div class="number">11</div>
+                    <div class="label">مركز وطبيب</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">12</div>
+                    <div class="label">رقم اتصال</div>
+                </div>
+                <div class="stat-card">
+                    <div class="number">5</div>
+                    <div class="label">مناطق خدمة</div>
+                </div>
+            </div>
+        </header>
+        
+        <div class="tabs">
+            <div class="tab active">الكل</div>
+            <div class="tab">قنا</div>
+            <div class="tab">الوقف</div>
+            <div class="tab">قوص</div>
+            <div class="tab">مراكز</div>
+            <div class="tab">أطباء</div>
+        </div>
+        
+        <div class="search-container">
+            <div class="search-box">
+                <input type="text" id="searchInput" placeholder="ابحث عن مركز أو طبيب بالاسم أو العنوان...">
+                <button id="searchBtn"><i class="fas fa-search"></i></button>
+            </div>
+        </div>
+        
+        <div class="main-content">
+            <div class="sidebar">
+                <h3><i class="fas fa-briefcase-medical"></i> التخصصات</h3>
+                <ul class="specialty-list">
+                    <li class="active"><i class="fas fa-star"></i> جميع التخصصات</li>
+                    <li><i class="fas fa-bone"></i> علاج إصابات العظام</li>
+                    <li><i class="fas fa-brain"></i> علاج الأمراض العصبية</li>
+                    <li><i class="fas fa-running"></i> إعادة التأهيل الحركي</li>
+                    <li><i class="fas fa-wheelchair"></i> علاج كبار السن</li>
+                    <li><i class="fas fa-child"></i> علاج الأطفال</li>
+                </ul>
+                
+                <h3 style="margin-top: 30px;"><i class="fas fa-map-marker-alt"></i> المناطق</h3>
+                <ul class="specialty-list">
+                    <li><i class="fas fa-city"></i> قنا</li>
+                    <li><i class="fas fa-map"></i> الوقف</li>
+                    <li><i class="fas fa-map"></i> قوص</li>
+                    <li><i class="fas fa-map"></i> نقادة</li>
+                    <li><i class="fas fa-map"></i> دشنا</li>
+                </ul>
+                
+                <div class="filter-section">
+                    <h4><i class="fas fa-filter"></i> التصفية حسب الخدمات</h4>
+                    <div class="filter-options">
+                        <div class="filter-btn">جلسات منزلية</div>
+                        <div class="filter-btn">أجهزة متطورة</div>
+                        <div class="filter-btn">تأمين صحي</div>
+                        <div class="filter-btn">عيادة مسائية</div>
+                    </div>
+                </div>
+            </div>
+            
+            <div class="doctor-list">
+                <!-- قنا -->
+                <div class="doctor-card">
+                    <div class="new-badge">مميز</div>
+                    <p class="doctor-name"><i class="fas fa-clinic-medical"></i> المركز الطبي التخصصي</p>
+                    <p class="doctor-address">قنا - شارع المستشارين - بجوار مركز الرازي</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01099264355</span>
+                        <div class="actions">
+                            <a href="tel:01099264355" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01099264355')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-clinic-medical"></i> مركز الأقصى</p>
+                    <p class="doctor-address">قنا - بجوار الأحوال المدنية</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 0963349098</span>
+                        <div class="actions">
+                            <a href="tel:0963349098" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('0963349098')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-clinic-medical"></i> مركز الفرغلي</p>
+                    <p class="doctor-address">قنا - بجوار صيدلية الرحمة</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01005626850</span>
+                        <div class="actions">
+                            <a href="tel:01005626850" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01005626850')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-clinic-medical"></i> مركز د. أحمد تاج الدين</p>
+                    <p class="doctor-address">قنا - المعبر</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01000329139</span>
+                        <div class="actions">
+                            <a href="tel:01000329139" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01000329139')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-clinic-medical"></i> مركز د. نهى الهواري</p>
+                    <p class="doctor-address">قنا - أمام نادي الزراعيين - برج الروضة</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01008067306</span>
+                        <div class="actions">
+                            <a href="tel:01008067306" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01008067306')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-user-md"></i> د. محمود الشاذلي</p>
+                    <p class="doctor-address">قنا - بجوار قاعة مبراج</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01019603384</span>
+                        <div class="actions">
+                            <a href="tel:01019603384" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01019603384')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-clinic-medical"></i> مركز الزهراء (د. فاطمة حسين)</p>
+                    <p class="doctor-address">قنا - حوض 10 - خلف مدرسة السلام الثانوي بنين</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01010849392</span>
+                        <div class="actions">
+                            <a href="tel:01010849392" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01010849392')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- الوقف -->
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-clinic-medical"></i> مركز فيريست موف</p>
+                    <p class="doctor-address">الوقف - المداكير</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01099718540</span>
+                        <div class="actions">
+                            <a href="tel:01099718540" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01099718540')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-user-md"></i> د. محمد عبد الوهاب محمد</p>
+                    <p class="doctor-address">الوقف - المراشدة - شارع المجلس القديم - بجوار عيادة د. محمود عبد العاطي</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01033209165</span>
+                        <div class="actions">
+                            <a href="tel:01033209165" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01033209165')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <!-- قوص -->
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-user-md"></i> د. تواضروس أديب أيوب</p>
+                    <p class="doctor-address">قوص - غرب المزاقان - بجوار مدرسة بنات قوص</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01111425453</span>
+                        <div class="actions">
+                            <a href="tel:01111425453" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01111425453')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="doctor-card">
+                    <p class="doctor-name"><i class="fas fa-user-md"></i> د. تواضروس أديب أيوب</p>
+                    <p class="doctor-address">قوص - شارع الجمهورية</p>
+                    <div class="phone-container">
+                        <span class="phone-number"><i class="fas fa-phone"></i> 01149352575</span>
+                        <div class="actions">
+                            <a href="tel:01149352575" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                            <button class="copy-btn" onclick="copyNumber('01149352575')"><i class="fas fa-copy"></i> نسخ</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        
+        <div class="info-section">
+            <h3><i class="fas fa-info-circle"></i> معلومات عن العلاج الطبيعي</h3>
+            <p>العلاج الطبيعي هو أحد فروع الطب الذي يهدف إلى تحسين حركة الجسم ووظائفه بعد الإصابة أو المرض. يستخدم أخصائيو العلاج الطبيعي تقنيات متعددة لمساعدة المرضى على استعادة الحركة وتقليل الألم.</p>
+            
+            <h3 style="margin-top: 20px;"><i class="fas fa-hand-holding-heart"></i> الخدمات الشائعة:</h3>
+            <ul>
+                <li>علاج إصابات العظام والمفاصل</li>
+                <li>إعادة التأهيل بعد الجراحات</li>
+                <li>علاج الآلام المزمنة</li>
+                <li>تحسين التوازن والحركة لكبار السن</li>
+                <li>علاج إصابات الرياضيين</li>
+                <li>تأهيل الأطفال ذوي الاحتياجات الخاصة</li>
+            </ul>
+        </div>
+        
+        <footer>
+            <p>© 2025 دليل مراكز العلاج الطبيعي في قنا | تم التحديث في يوليو 2025</p>
+            <p>جميع المعلومات مقدمة كمرجع عام ولا تغني عن الاستشارة الطبية المتخصصة</p>
+        </footer>
+    </div>
+    
+    <script>
+        // دالة نسخ الرقم
+        function copyNumber(number) {
+            navigator.clipboard.writeText(number).then(() => {
+                alert('تم نسخ الرقم: ' + number);
+            });
+        }
+        
+        // وظيفة البحث
+        document.getElementById('searchBtn').addEventListener('click', searchDoctors);
+        document.getElementById('searchInput').addEventListener('keyup', function(event) {
+            if (event.key === 'Enter') {
+                searchDoctors();
+            }
+        });
+        
+        function searchDoctors() {
+            const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+            const doctorCards = document.querySelectorAll('.doctor-card');
+            let found = false;
+            
+            doctorCards.forEach(card => {
+                const name = card.querySelector('.doctor-name').textContent.toLowerCase();
+                const address = card.querySelector('.doctor-address').textContent.toLowerCase();
+                
+                if (name.includes(searchTerm) || address.includes(searchTerm)) {
+                    card.style.display = 'block';
+                    found = true;
+                } else {
+                    card.style.display = 'none';
+                }
+            });
+            
+            if (!found && searchTerm) {
+                alert('لم يتم العثور على مراكز أو أطباء يطابقون بحثك');
+            }
+        }
+        
+        // تنشيط علامات التبويب
+        const tabs = document.querySelectorAll('.tab');
+        tabs.forEach(tab => {
+            tab.addEventListener('click', () => {
+                tabs.forEach(t => t.classList.remove('active'));
+                tab.classList.add('active');
+                
+                // تصفية حسب المنطقة
+                const area = tab.textContent;
+                const cards = document.querySelectorAll('.doctor-card');
+                
+                cards.forEach(card => {
+                    if (area === 'الكل') {
+                        card.style.display = 'block';
+                    } else if (area === 'مراكز') {
+                        if (card.querySelector('.doctor-name').innerHTML.includes('fas fa-clinic-medical')) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    } else if (area === 'أطباء') {
+                        if (card.querySelector('.doctor-name').innerHTML.includes('fas fa-user-md')) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    } else {
+                        if (card.querySelector('.doctor-address').textContent.includes(area)) {
+                            card.style.display = 'block';
+                        } else {
+                            card.style.display = 'none';
+                        }
+                    }
+                });
+            });
+        });
+        
+        // تنشيط التخصصات
+        const specialties = document.querySelectorAll('.specialty-list li');
+        specialties.forEach(specialty => {
+            specialty.addEventListener('click', () => {
+                specialties.forEach(s => s.classList.remove('active'));
+                specialty.classList.add('active');
+            });
+        });
+        
+        // تنشيط أزرار التصفية
+        const filterBtns = document.querySelectorAll('.filter-btn');
+        filterBtns.forEach(btn => {
+            btn.addEventListener('click', () => {
+                btn.classList.toggle('active');
+            });
+        });
+    </script>
+</body>
+</html>

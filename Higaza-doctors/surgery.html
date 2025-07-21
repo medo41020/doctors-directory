@@ -1,0 +1,400 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>جراحة عامة - حجازة</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      color: #343a40;
+      line-height: 1.7;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding: 30px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 25px 0;
+      margin-bottom: 25px;
+      background: linear-gradient(120deg, #dc3545, #a71d2a);
+      border-radius: 12px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+    }
+    
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 12px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      min-width: 130px;
+      border: 1px solid #e9ecef;
+    }
+    
+    .stat-card .number {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #dc3545;
+    }
+    
+    .stat-card .label {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    
+    .search-container {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e9ecef;
+    }
+    
+    .search-box {
+      display: flex;
+      max-width: 100%;
+    }
+    
+    .search-box input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 2px solid #dc3545;
+      border-radius: 50px 0 0 50px;
+      font-size: 1rem;
+      outline: none;
+      background: white;
+    }
+    
+    .search-box button {
+      background: #dc3545;
+      color: white;
+      border: none;
+      padding: 0 22px;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .search-box button:hover {
+      background: #c82333;
+    }
+    
+    .doctor-list {
+      margin-top: 30px;
+    }
+    
+    .doctor-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: right;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-left: 4px solid #dc3545;
+      position: relative;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .doctor-name {
+      color: #212529;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .doctor-name::before {
+      content: "👨‍⚕️";
+      font-size: 1.2rem;
+    }
+    
+    .doctor-address {
+      font-size: 1rem;
+      color: #495057;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #e9ecef;
+      line-height: 1.6;
+    }
+    
+    .phone-container {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .phone-number {
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8f9fa;
+      padding: 8px 15px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .phone-number::before {
+      content: "📞";
+      margin-left: 5px;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .call-btn, .copy-btn {
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s;
+    }
+    
+    .call-btn {
+      background: #dc3545;
+      color: #fff;
+    }
+    
+    .call-btn:hover {
+      background: #bd2130;
+    }
+    
+    .copy-btn {
+      background: #495057;
+      color: #fff;
+    }
+    
+    .copy-btn:hover {
+      background: #343a40;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 25px 0 10px;
+      margin-top: 30px;
+      color: #6c757d;
+      font-size: 0.9rem;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .doctor-card {
+        padding: 15px;
+      }
+      
+      .phone-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .call-btn, .copy-btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2>🔪 أطباء الجراحة العامة في حجازة</h2>
+      <p class="subtitle">الدليل الشامل لأطباء الجراحة في حجازة مع وسائل الاتصال المباشر</p>
+    </header>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="number">3</div>
+        <div class="label">طبيب جراحة</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">4</div>
+        <div class="label">رقم اتصال</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">1</div>
+        <div class="label">منطقة خدمة</div>
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن طبيب بالاسم أو العنوان...">
+        <button id="searchBtn">🔍 بحث</button>
+      </div>
+    </div>
+    
+    <div class="doctor-list">
+      <!-- طبيب برقم واحد -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ علي هريدي</p>
+        <div class="phone-container">
+          <span class="phone-number">01123443255</span>
+          <div class="actions">
+            <a href="tel:01123443255" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01123443255')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- طبيب برقم واحد -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ ناجي</p>
+        <div class="phone-container">
+          <span class="phone-number">01112775688</span>
+          <div class="actions">
+            <a href="tel:01112775688" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01112775688')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- طبيب برقمين -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ أحمد محمد سعيد</p>
+        <div class="phone-container">
+          <span class="phone-number">01159594069</span>
+          <div class="actions">
+            <a href="tel:01159594069" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01159594069')">📋 نسخ</button>
+          </div>
+        </div>
+        
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>© 2025 دليل أطباء الجراحة العامة في حجازة | تم التحديث في يناير 2025</p>
+      <p>جميع المعلومات مقدمة كمرجع عام ولا تغني عن الاستشارة الطبية المتخصصة</p>
+    </footer>
+  </div>
+  
+  <script>
+    // دالة نسخ الرقم
+    function copyNumber(number) {
+      navigator.clipboard.writeText(number).then(() => {
+        alert('تم نسخ الرقم: ' + number);
+      });
+    }
+    
+    // وظيفة البحث
+    document.getElementById('searchBtn').addEventListener('click', searchDoctors);
+    document.getElementById('searchInput').addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        searchDoctors();
+      }
+    });
+    
+    function searchDoctors() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const doctorCards = document.querySelectorAll('.doctor-card');
+      let found = false;
+      
+      doctorCards.forEach(card => {
+        const name = card.querySelector('.doctor-name').textContent.toLowerCase();
+        const address = card.querySelector('.doctor-address').textContent.toLowerCase();
+        
+        if (name.includes(searchTerm) || address.includes(searchTerm)) {
+          card.style.display = 'block';
+          found = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (!found && searchTerm) {
+        alert('لم يتم العثور على أطباء يطابقون بحثك');
+      }
+    }
+  </script>
+</body>
+</html>

@@ -1,0 +1,106 @@
+/* Reset بسيط */
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+  font-family: Arial, sans-serif;
+}
+
+/* الخلفية والكونتينر */
+body {
+  background: #f4f4f9;
+  padding: 20px;
+  direction: rtl;
+  color: #333;
+}
+
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+/* عنوان الصفحة */
+h2 {
+  text-align: center;
+  margin-bottom: 25px;
+  color: #6e3b8f;
+}
+
+/* كروت الدكاترة */
+.doctor-card {
+  background-color: white;
+  border-radius: 12px;
+  padding: 15px 20px;
+  margin-bottom: 15px;
+  box-shadow: 0 4px 6px rgba(110, 59, 143, 0.1);
+  transition: box-shadow 0.3s ease;
+}
+
+.doctor-card:hover {
+  box-shadow: 0 6px 12px rgba(110, 59, 143, 0.3);
+}
+
+/* اسم الدكتور */
+.doctor-card p strong {
+  font-size: 18px;
+  color: #4a1e81;
+  display: block;
+  margin-bottom: 8px;
+}
+
+/* رقم التليفون */
+.doctor-card p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+/* أزرار الاتصال والنسخ */
+.call-btn, .copy-btn {
+  display: inline-block;
+  background-color: #6e3b8f;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  padding: 8px 14px;
+  font-size: 14px;
+  cursor: pointer;
+  margin-right: 10px;
+  text-decoration: none;
+  user-select: none;
+  transition: background-color 0.3s ease;
+}
+
+.call-btn:hover, .copy-btn:hover {
+  background-color: #55276e;
+}
+
+.copy-btn {
+  background-color: #000;
+}
+
+.copy-btn:hover {
+  background-color: #333;
+}
+
+/* روابط الاتصال */
+.call-btn {
+  text-align: center;
+}
+
+/* لأجهزة الموبايل */
+@media (max-width: 480px) {
+  .container {
+    padding: 0 10px;
+  }
+  .doctor-card p strong {
+    font-size: 16px;
+  }
+  .doctor-card p {
+    font-size: 14px;
+  }
+  .call-btn, .copy-btn {
+    padding: 7px 10px;
+    font-size: 13px;
+    margin-bottom: 6px;
+  }
+}

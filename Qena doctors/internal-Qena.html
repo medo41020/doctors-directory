@@ -1,0 +1,887 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>اطباء الامراض الباطنية  (عامة) - قنا</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+    
+    :root {
+      --primary: #2c7873;
+      --secondary: #6fb98f;
+      --accent: #ff9a3c;
+      --light: #f8f9fa;
+      --dark: #2c3e50;
+      --text: #34495e;
+    }
+    
+    body {
+      background: linear-gradient(135deg, #e8f4f8, #d1e7ee);
+      color: var(--text);
+      line-height: 1.7;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 1000px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0, 0, 0, 0.12);
+      overflow: hidden;
+    }
+    
+    header {
+      text-align: center;
+      padding: 40px 20px 30px;
+      background: linear-gradient(120deg, var(--primary), var(--secondary));
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+      z-index: 1;
+    }
+    
+    .header-content {
+      position: relative;
+      z-index: 2;
+    }
+    
+    h1 {
+      font-size: 2.8rem;
+      margin-bottom: 15px;
+      text-shadow: 0 3px 6px rgba(0,0,0,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 15px;
+    }
+    
+    .subtitle {
+      font-size: 1.3rem;
+      opacity: 0.95;
+      max-width: 700px;
+      margin: 0 auto 20px;
+      font-weight: 300;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 30px 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: rgba(255, 255, 255, 0.15);
+      backdrop-filter: blur(10px);
+      border-radius: 15px;
+      padding: 20px;
+      text-align: center;
+      min-width: 160px;
+      border: 1px solid rgba(255,255,255,0.2);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      transition: transform 0.3s;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+    }
+    
+    .stat-card .number {
+      font-size: 2.2rem;
+      font-weight: bold;
+      margin-bottom: 5px;
+    }
+    
+    .stat-card .label {
+      font-size: 1.1rem;
+    }
+    
+    .search-container {
+      background: var(--light);
+      padding: 25px;
+      margin: 0;
+    }
+    
+    .search-box {
+      display: flex;
+      max-width: 100%;
+      border-radius: 60px;
+      overflow: hidden;
+      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
+    }
+    
+    .search-box input {
+      flex: 1;
+      padding: 18px 25px;
+      border: none;
+      font-size: 1.1rem;
+      outline: none;
+      background: white;
+    }
+    
+    .search-box button {
+      background: var(--accent);
+      color: white;
+      border: none;
+      padding: 0 35px;
+      cursor: pointer;
+      font-size: 1.2rem;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .search-box button:hover {
+      background: #e86b00;
+    }
+    
+    .content {
+      padding: 30px;
+    }
+    
+    .section-title {
+      font-size: 1.8rem;
+      color: var(--primary);
+      margin: 30px 0 20px;
+      padding-bottom: 15px;
+      border-bottom: 3px solid var(--secondary);
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .doctor-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(400px, 1fr));
+      gap: 25px;
+      margin-top: 20px;
+    }
+    
+    .doctor-card {
+      background: white;
+      border-radius: 18px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      transition: all 0.3s;
+      border-left: 5px solid var(--primary);
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 0, 0, 0.15);
+    }
+    
+    .doctor-card::before {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 5px;
+      background: linear-gradient(90deg, var(--primary), var(--secondary));
+    }
+    
+    .doctor-name {
+      color: var(--dark);
+      font-weight: bold;
+      font-size: 1.5rem;
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .doctor-name i {
+      color: var(--primary);
+      font-size: 1.4rem;
+    }
+    
+    .doctor-address {
+      font-size: 1.1rem;
+      color: var(--text);
+      margin-bottom: 20px;
+      padding-bottom: 20px;
+      border-bottom: 1px dashed #e0e6ed;
+      line-height: 1.7;
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+    }
+    
+    .doctor-address i {
+      color: var(--secondary);
+      margin-top: 4px;
+    }
+    
+    .phone-container {
+      margin-bottom: 15px;
+      display: flex;
+      flex-direction: column;
+      gap: 15px;
+    }
+    
+    .phone-item {
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+    }
+    
+    .phone-number {
+      font-size: 1.2rem;
+      font-weight: 500;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      background: #f0f9ff;
+      padding: 12px 20px;
+      border-radius: 12px;
+      border: 1px solid #d1ecf1;
+    }
+    
+    .phone-number i {
+      color: var(--primary);
+      font-size: 1.3rem;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 15px;
+      margin-top: 10px;
+    }
+    
+    .call-btn, .copy-btn {
+      border: none;
+      border-radius: 10px;
+      padding: 12px 20px;
+      font-size: 1.05rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+      flex: 1;
+      justify-content: center;
+    }
+    
+    .call-btn {
+      background: var(--primary);
+      color: white;
+    }
+    
+    .call-btn:hover {
+      background: #215e59;
+      box-shadow: 0 5px 15px rgba(44, 120, 115, 0.3);
+    }
+    
+    .copy-btn {
+      background: var(--accent);
+      color: white;
+    }
+    
+    .copy-btn:hover {
+      background: #e86b00;
+      box-shadow: 0 5px 15px rgba(255, 154, 60, 0.3);
+    }
+    
+    .location-tabs {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 15px;
+      margin-bottom: 30px;
+      background: var(--light);
+      padding: 20px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.05);
+    }
+    
+    .location-btn {
+      padding: 12px 25px;
+      border-radius: 50px;
+      background: white;
+      border: 2px solid var(--secondary);
+      color: var(--text);
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .location-btn.active, .location-btn:hover {
+      background: var(--secondary);
+      color: white;
+    }
+    
+    .location-btn i {
+      font-size: 1.1rem;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 40px 20px;
+      margin-top: 20px;
+      color: white;
+      background: linear-gradient(120deg, var(--dark), #1a2a3a);
+      font-size: 1rem;
+    }
+    
+    .footer-content {
+      max-width: 700px;
+      margin: 0 auto;
+    }
+    
+    .footer-logo {
+      font-size: 2.5rem;
+      margin-bottom: 20px;
+      color: var(--accent);
+    }
+    
+    .footer-links {
+      display: flex;
+      justify-content: center;
+      gap: 25px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+    
+    .footer-links a {
+      color: #a0c4e0;
+      text-decoration: none;
+      transition: color 0.3s;
+    }
+    
+    .footer-links a:hover {
+      color: var(--accent);
+    }
+    
+    .copyright {
+      margin-top: 30px;
+      padding-top: 20px;
+      border-top: 1px solid rgba(255,255,255,0.1);
+      color: #b0cde0;
+    }
+    
+    @media (max-width: 900px) {
+      .doctor-list {
+        grid-template-columns: 1fr;
+      }
+      
+      h1 {
+        font-size: 2.3rem;
+      }
+      
+      .stat-card {
+        min-width: 130px;
+        padding: 15px;
+      }
+      
+      .stat-card .number {
+        font-size: 1.8rem;
+      }
+    }
+    
+    @media (max-width: 600px) {
+      .search-box button {
+        padding: 0 25px;
+      }
+      
+      .search-box input {
+        padding: 15px 20px;
+      }
+      
+      .location-tabs {
+        justify-content: center;
+      }
+      
+      h1 {
+        font-size: 2rem;
+      }
+      
+      .subtitle {
+        font-size: 1.1rem;
+      }
+      
+      .stats {
+        gap: 15px;
+      }
+      
+      .stat-card {
+        min-width: 100px;
+        padding: 12px;
+      }
+      
+      .stat-card .number {
+        font-size: 1.6rem;
+      }
+      
+      .stat-card .label {
+        font-size: 0.9rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <div class="header-content">
+        <h1><i class="fas fa-stethoscope"></i> أطباء الأمراض الباطنية في قنا</h1>
+        <p class="subtitle">الدليل الشامل لأطباء الباطنة العامة في محافظة قنا ومراكزها مع وسائل الاتصال المباشر</p>
+        
+        <div class="stats">
+          <div class="stat-card">
+            <div class="number">39</div>
+            <div class="label">طبيب باطنة</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">45</div>
+            <div class="label">رقم اتصال</div>
+          </div>
+          <div class="stat-card">
+            <div class="number">7</div>
+            <div class="label">مناطق خدمة</div>
+          </div>
+        </div>
+      </div>
+    </header>
+    
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن طبيب بالاسم، العنوان أو المنطقة...">
+        <button id="searchBtn"><i class="fas fa-search"></i> بحث</button>
+      </div>
+    </div>
+    
+    <div class="content">
+      <div class="location-tabs">
+        <button class="location-btn active"><i class="fas fa-map-marker-alt"></i> جميع المناطق</button>
+        <button class="location-btn"><i class="fas fa-city"></i> قنا</button>
+        <button class="location-btn"><i class="fas fa-clinic-medical"></i> نجع حمادي</button>
+        <button class="location-btn"><i class="fas fa-hospital"></i> فرشوط</button>
+        <button class="location-btn"><i class="fas fa-hospital-alt"></i> أبو تشت</button>
+        <button class="location-btn"><i class="fas fa-map-marked-alt"></i> دشنا</button>
+        <button class="location-btn"><i class="fas fa-location-dot"></i> الوقف</button>
+      </div>
+      
+      <h2 class="section-title"><i class="fas fa-user-md"></i> قائمة الأطباء</h2>
+      
+      <div class="doctor-list">
+        <!-- قائمة الأطباء -->
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ عبد الحكيم العريان</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - 23 يوليو - بجوار كافيتيريا شقاوة</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01099161379</span>
+              <div class="actions">
+                <a href="tel:01099161379" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01099161379')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963348924</span>
+              <div class="actions">
+                <a href="tel:0963348924" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963348924')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ مصطفى فهمي فؤاد</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - مصنع المكرونة - مركز الكمال الطبي</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01126575726</span>
+              <div class="actions">
+                <a href="tel:01126575726" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01126575726')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ حسام إسماعيل</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - خلف ملاعب الشبان المسلمين - صيدلية هشام هلال</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01147727300</span>
+              <div class="actions">
+                <a href="tel:01147727300" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01147727300')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963328662</span>
+              <div class="actions">
+                <a href="tel:0963328662" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963328662')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ عبد الحكيم بحر</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - أمام نادي الشرطة</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963328815</span>
+              <div class="actions">
+                <a href="tel:0963328815" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963328815')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ أسامة إدريس</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - شارع يوليو - صيدلية طيبة</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963360123</span>
+              <div class="actions">
+                <a href="tel:0963360123" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963360123')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ عبد الرؤوف حفظي</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - الشهورية - عمر أفندي</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01027333991</span>
+              <div class="actions">
+                <a href="tel:01027333991" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01027333991')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963325700</span>
+              <div class="actions">
+                <a href="tel:0963325700" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963325700')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ جيهان جمال عمار</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - حوض 10</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963333811</span>
+              <div class="actions">
+                <a href="tel:0963333811" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963333811')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ جمال رمضان الطويل</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - عمارة الأندلس - خلف نادي الشرطة</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963325132</span>
+              <div class="actions">
+                <a href="tel:0963325132" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963325132')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ وليد صلاح عثمان</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - الأشراف - بجوار صيدلية د. محمد عثمان</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01069289226</span>
+              <div class="actions">
+                <a href="tel:01069289226" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01069289226')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ أسامة محمد عثمان</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - بجوار مستشفى الصدر</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963331501</span>
+              <div class="actions">
+                <a href="tel:0963331501" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963331501')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ جرجس رومان قديس</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - شارع عبيد</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963322747</span>
+              <div class="actions">
+                <a href="tel:0963322747" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963322747')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ فخري محمد عثمان</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - شارع ساحل الغلال</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0963323274</span>
+              <div class="actions">
+                <a href="tel:0963323274" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0963323274')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ إنجي خلف عبيد</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - شارع المستشفى العام - أعلى مركز الراعي الصالح - بجوار دار العيون</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01222241286</span>
+              <div class="actions">
+                <a href="tel:01222241286" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01222241286')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ شرف كمال محمد</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - خلف عمر أفندي</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01222460609</span>
+              <div class="actions">
+                <a href="tel:01222460609" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01222460609')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ من محمد أمين يشير</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - شارع 23 يوليو - أمام كافيه شقارة</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 011177228851</span>
+              <div class="actions">
+                <a href="tel:011177228851" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('011177228851')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ صلاح عبد الحميد محمد</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> قنا - مستشفى الشفاء</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01021989199</span>
+              <div class="actions">
+                <a href="tel:01021989199" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01021989199')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ أسماء علي أحمد</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> دشنا - الطريق السريع</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01201809107</span>
+              <div class="actions">
+                <a href="tel:01201809107" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01201809107')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ فوزي محمد حسن</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> فرشوط - أمام البنك الأهلي</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01151817806</span>
+              <div class="actions">
+                <a href="tel:01151817806" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01151817806')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ ياسر مهران الغليولي</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> فرشوط - شارع المحطة - مسجد السلام</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01001922486</span>
+              <div class="actions">
+                <a href="tel:01001922486" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01001922486')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ عبد العليم علي السيد</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> أبو تشت - بجوار المستشفى العام</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 01002392123</span>
+              <div class="actions">
+                <a href="tel:01002392123" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('01002392123')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <div class="doctor-card">
+          <p class="doctor-name"><i class="fas fa-user-md"></i> د/ محمود إبراهيم المعاون</p>
+          <p class="doctor-address"><i class="fas fa-location-dot"></i> الوقف</p>
+          <div class="phone-container">
+            <div class="phone-item">
+              <span class="phone-number"><i class="fas fa-phone"></i> 0966516516</span>
+              <div class="actions">
+                <a href="tel:0966516516" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+                <button class="copy-btn" onclick="copyNumber('0966516516')"><i class="fas fa-copy"></i> نسخ</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <div class="footer-content">
+        <div class="footer-logo">
+          <i class="fas fa-heartbeat"></i>
+        </div>
+        <h3>دليل أطباء الأمراض الباطنية في محافظة قنا</h3>
+        <p>نسعى لتقديم معلومات دقيقة وحديثة لخدمة المواطنين في محافظة قنا</p>
+        
+        <div class="footer-links">
+          <a href="#"><i class="fas fa-info-circle"></i> عن الموقع</a>
+          <a href="#"><i class="fas fa-user-shield"></i> سياسة الخصوصية</a>
+          <a href="#"><i class="fas fa-envelope"></i> اتصل بنا</a>
+          <a href="#"><i class="fas fa-map-marked-alt"></i> خريطة العيادات</a>
+          <a href="#"><i class="fas fa-calendar-check"></i> حجز مواعيد</a>
+        </div>
+        
+        <div class="copyright">
+          <p>© 2025 دليل أطباء الباطنة في قنا | تم التحديث في يوليو 2025</p>
+          <p>جميع المعلومات مقدمة كمرجع عام ولا تغني عن الاستشارة الطبية المتخصصة</p>
+        </div>
+      </div>
+    </footer>
+  </div>
+  
+  <script>
+    // دالة نسخ الرقم
+    function copyNumber(number) {
+      navigator.clipboard.writeText(number).then(() => {
+        alert('تم نسخ الرقم: ' + number);
+      });
+    }
+    
+    // وظيفة البحث
+    document.getElementById('searchBtn').addEventListener('click', searchDoctors);
+    document.getElementById('searchInput').addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        searchDoctors();
+      }
+    });
+    
+    function searchDoctors() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const doctorCards = document.querySelectorAll('.doctor-card');
+      let found = false;
+      
+      doctorCards.forEach(card => {
+        const name = card.querySelector('.doctor-name').textContent.toLowerCase();
+        const address = card.querySelector('.doctor-address').textContent.toLowerCase();
+        
+        if (name.includes(searchTerm) || address.includes(searchTerm)) {
+          card.style.display = 'block';
+          found = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (!found && searchTerm) {
+        alert('لم يتم العثور على أطباء يطابقون بحثك');
+      }
+    }
+    
+    // وظائف أزرار التصفية حسب المنطقة
+    const locationBtns = document.querySelectorAll('.location-btn');
+    locationBtns.forEach(btn => {
+      btn.addEventListener('click', function() {
+        locationBtns.forEach(b => b.classList.remove('active'));
+        this.classList.add('active');
+        
+        // هنا يمكن إضافة وظيفة التصفية حسب المنطقة
+        // تنفيذ فعلي للتصفية حسب المنطقة سيحتاج لمزيد من التطوير
+      });
+    });
+  </script>
+</body>
+</html>

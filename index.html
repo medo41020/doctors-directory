@@ -1,0 +1,333 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>الدليل الطبي الشامل</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        :root {
+            --primary: #5d69b3; /* لون رئيسي متناسق */
+            --accent: #f8fafc;
+            --dark: #2d3748;
+            --light: #ffffff;
+            --text: #2d3748;
+            --text-light: #4a5568;
+            --card-bg: #ffffff;
+            --card-hover: #f7fafc;
+            
+            /* ألوان الفروع المتناسقة */
+            --hijaza-color: #e84393; /* وردي غامق */
+            --qus-color: #6c5ce7; /* بنفسجي */
+            --qena-color: #00b894; /* أخضر فيروزي */
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Tajawal', 'Segoe UI', sans-serif;
+        }
+        
+        body {
+            background-color: var(--accent);
+            color: var(--text);
+            line-height: 1.7;
+            min-height: 100vh;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 30px;
+        }
+        
+        header {
+            text-align: center;
+            padding: 40px 0;
+            margin-bottom: 30px;
+        }
+        
+        h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--dark);
+            position: relative;
+            display: inline-block;
+        }
+        
+        h1::after {
+            content: "";
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100px;
+            height: 4px;
+            background: linear-gradient(to right, var(--hijaza-color), var(--qus-color));
+            border-radius: 2px;
+        }
+        
+        .subtitle {
+            font-size: 1.2rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .branches-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
+        }
+        
+        .branch-card {
+            background: var(--card-bg);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            position: relative;
+        }
+        
+        .branch-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.15);
+        }
+        
+        .branch-header {
+            padding: 25px;
+            color: white;
+            position: relative;
+            min-height: 180px;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+        }
+        
+        .branch-header::before {
+            content: "";
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%);
+        }
+        
+        /* تعديل ترتيب الفروع والألوان */
+        .hijaza-header {
+            background: linear-gradient(135deg, var(--hijaza-color), #fd79a8);
+        }
+        
+        .qus-header {
+            background: linear-gradient(135deg, var(--qus-color), #a29bfe);
+        }
+        
+        .qena-header {
+            background: linear-gradient(135deg, var(--qena-color), #55efc4);
+        }
+        
+        .branch-icon {
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            position: relative;
+        }
+        
+        .branch-title {
+            font-size: 1.8rem;
+            margin-bottom: 10px;
+            position: relative;
+        }
+        
+        .branch-description {
+            font-size: 1rem;
+            opacity: 0.9;
+            position: relative;
+        }
+        
+        .branch-body {
+            padding: 25px;
+        }
+        
+        .branch-stats {
+            display: flex;
+            justify-content: space-around;
+            text-align: center;
+            margin-bottom: 20px;
+        }
+        
+        .stat {
+            padding: 10px;
+        }
+        
+        .stat-number {
+            font-size: 1.8rem;
+            font-weight: bold;
+            margin-bottom: 5px;
+        }
+        
+        .hijaza-stat {
+            color: var(--hijaza-color);
+        }
+        
+        .qus-stat {
+            color: var(--qus-color);
+        }
+        
+        .qena-stat {
+            color: var(--qena-color);
+        }
+        
+        .stat-label {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+        
+        .branch-btn {
+            display: block;
+            text-align: center;
+            padding: 12px;
+            border-radius: 8px;
+            color: white;
+            text-decoration: none;
+            font-weight: bold;
+            font-size: 1.1rem;
+            transition: all 0.3s;
+            margin-top: 15px;
+        }
+        
+        .hijaza-btn {
+            background: var(--hijaza-color);
+        }
+        
+        .qus-btn {
+            background: var(--qus-color);
+        }
+        
+        .qena-btn {
+            background: var(--qena-color);
+        }
+        
+        .branch-btn:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+        }
+        
+        footer {
+            text-align: center;
+            padding: 40px 0 20px;
+            margin-top: 50px;
+            color: var(--text-light);
+            border-top: 1px solid #e2e8f0;
+        }
+        
+        @media (max-width: 768px) {
+            .branches-container {
+                grid-template-columns: 1fr;
+            }
+            
+            h1 {
+                font-size: 2.2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1><i class="fas fa-heartbeat"></i>    الدليل الطبي الشامل للأطباء</h1>
+            <p></p>      </p>
+
+            <h1></i>   </h1>
+        
+
+
+        </header>
+        
+        <div class="branches-container">
+            <!-- بطاقة فرع حجازة (الأول الآن) -->
+            <div class="branch-card">
+                <div class="branch-header hijaza-header">
+                    <div class="branch-icon"><i class="fas fa-hospital-user"></i></div>
+                    <h2 class="branch-title">أطباء حجازة</h2>
+                    <p class="branch-description">الدليل الطبي الشامل لأطباء مستشفى حجازة</p>
+                </div>
+                <div class="branch-body">
+                    <div class="branch-stats">
+                        <div class="stat">
+                            <div class="stat-number hijaza-stat">13</div>
+                            <div class="stat-label">تخصص طبي</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number hijaza-stat">80+</div>
+                            <div class="stat-label">طبيب متخصص</div>
+                        </div>
+                    </div>
+                    <a href="./Higaza-doctors/Higaza.html" class="branch-btn hijaza-btn">
+                        <i class="fas fa-arrow-left"></i> عرض دليل أطباء حجازة
+                    </a>
+                </div>
+            </div>
+            
+            <!-- بطاقة فرع قوص -->
+            <div class="branch-card">
+                <div class="branch-header qus-header">
+                    <div class="branch-icon"><i class="fas fa-clinic-medical"></i></div>
+                    <h2 class="branch-title">أطباء قوص</h2>
+                    <p class="branch-description">الدليل الطبي الشامل لأطباء مركز قوص</p>
+                </div>
+                <div class="branch-body">
+                    <div class="branch-stats">
+                        <div class="stat">
+                            <div class="stat-number qus-stat">16</div>
+                            <div class="stat-label">تخصص طبي</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number qus-stat">120+</div>
+                            <div class="stat-label">طبيب متخصص</div>
+                        </div>
+                    </div>
+                    <a href="./Qus doctors/Qus.html" class="branch-btn qus-btn">
+                        <i class="fas fa-arrow-left"></i> عرض دليل أطباء قوص
+                    </a>
+                </div>
+            </div>
+            
+            <!-- بطاقة فرع قنا -->
+            <div class="branch-card">
+                <div class="branch-header qena-header">
+                    <div class="branch-icon"><i class="fas fa-hospital-alt"></i></div>
+                    <h2 class="branch-title">أطباء قنا</h2>
+                    <p class="branch-description">الدليل الطبي الشامل لأطباء محافظة قنا</p>
+                </div>
+                <div class="branch-body">
+                    <div class="branch-stats">
+                        <div class="stat">
+                            <div class="stat-number qena-stat">15</div>
+                            <div class="stat-label">تخصص طبي</div>
+                        </div>
+                        <div class="stat">
+                            <div class="stat-number qena-stat">90+</div>
+                            <div class="stat-label">طبيب متخصص</div>
+                        </div>
+                    </div>
+                    <a href="./Qena doctors/Qena.html" class="branch-btn qena-btn">
+                        <i class="fas fa-arrow-left"></i> عرض دليل أطباء قنا
+                    </a>
+                </div>
+            </div>
+        </div>
+        
+        <footer>
+            <p>© 2025 الدليل الطبي الشامل | جميع الحقوق محفوظة</p>
+            <p style="margin-top: 15px; font-size: 0.9rem;">
+                <a href="#" style="color: var(--hijaza-color); text-decoration: none;">سياسة الخصوصية</a> | 
+                <a href="#" style="color: var(--qus-color); text-decoration: none;">شروط الاستخدام</a> | 
+                <a href="#" style="color: var(--qena-color); text-decoration: none;">اتصل بنا</a>
+            </p>
+        </footer>
+    </div>
+</body>
+</html>

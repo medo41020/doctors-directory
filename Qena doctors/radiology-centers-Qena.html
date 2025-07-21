@@ -1,0 +1,828 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>دليل مراكز الأشعة في قنا</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f5f7ff, #edf0ff);
+      color: #2c3e50;
+      line-height: 1.7;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 900px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding: 30px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 30px 0;
+      margin-bottom: 25px;
+      background: linear-gradient(120deg, #6c5ce7, #5d4aec);
+      border-radius: 12px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.2) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+    }
+    
+    h2 {
+      font-size: 2.3rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+      padding: 0 15px;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 20px;
+      margin: 25px 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 12px;
+      padding: 15px 25px;
+      text-align: center;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.08);
+      min-width: 140px;
+      border: 1px solid #e9ecef;
+      transition: transform 0.3s;
+    }
+    
+    .stat-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 8px 20px rgba(0,0,0,0.12);
+    }
+    
+    .stat-card .number {
+      font-size: 1.8rem;
+      font-weight: bold;
+      color: #6c5ce7;
+    }
+    
+    .stat-card .label {
+      font-size: 0.95rem;
+      color: #6c757d;
+    }
+    
+    .search-container {
+      background: #f0f4ff;
+      padding: 20px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #d9e0ff;
+    }
+    
+    .search-box {
+      display: flex;
+      max-width: 100%;
+    }
+    
+    .search-box input {
+      flex: 1;
+      padding: 14px 20px;
+      border: 2px solid #6c5ce7;
+      border-radius: 50px 0 0 50px;
+      font-size: 1.1rem;
+      outline: none;
+      background: white;
+      transition: border-color 0.3s;
+    }
+    
+    .search-box input:focus {
+      border-color: #5d4aec;
+    }
+    
+    .search-box button {
+      background: #6c5ce7;
+      color: white;
+      border: none;
+      padding: 0 25px;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      font-size: 1.1rem;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .search-box button:hover {
+      background: #5d4aec;
+    }
+    
+    .center-list {
+      margin-top: 30px;
+    }
+    
+    .center-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 6px 18px rgba(0, 0, 0, 0.08);
+      padding: 25px;
+      margin-bottom: 25px;
+      text-align: right;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-left: 5px solid #6c5ce7;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    .center-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+    }
+    
+    .center-name {
+      color: #2c3e50;
+      font-weight: bold;
+      font-size: 1.4rem;
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    
+    .center-name::before {
+      content: "📷";
+      font-size: 1.3rem;
+    }
+    
+    .center-address {
+      font-size: 1.05rem;
+      color: #495057;
+      margin-bottom: 18px;
+      padding-bottom: 18px;
+      border-bottom: 1px dashed #e9ecef;
+      line-height: 1.6;
+    }
+    
+    .phone-container {
+      margin-bottom: 15px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 12px;
+    }
+    
+    .phone-number {
+      font-size: 1.15rem;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      background: #f8f9fa;
+      padding: 10px 18px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      flex: 1;
+      min-width: 220px;
+    }
+    
+    .phone-number::before {
+      content: "📞";
+      margin-left: 5px;
+      color: #6c5ce7;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 12px;
+    }
+    
+    .call-btn, .copy-btn {
+      border: none;
+      border-radius: 8px;
+      padding: 10px 18px;
+      font-size: 1rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      transition: all 0.3s;
+    }
+    
+    .call-btn {
+      background: #6c5ce7;
+      color: #fff;
+    }
+    
+    .call-btn:hover {
+      background: #5d4aec;
+      transform: scale(1.05);
+    }
+    
+    .copy-btn {
+      background: #495057;
+      color: #fff;
+    }
+    
+    .copy-btn:hover {
+      background: #343a40;
+      transform: scale(1.05);
+    }
+    
+    .location-tag {
+      position: absolute;
+      top: 15px;
+      left: 15px;
+      background: #a29bfe;
+      color: white;
+      padding: 5px 15px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      font-weight: bold;
+    }
+    
+    .special-features {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 10px;
+      margin-top: 15px;
+    }
+    
+    .feature {
+      background: #e6e8ff;
+      color: #6c5ce7;
+      padding: 6px 14px;
+      border-radius: 20px;
+      font-size: 0.9rem;
+      display: flex;
+      align-items: center;
+      gap: 6px;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 30px 0 15px;
+      margin-top: 30px;
+      color: #6c757d;
+      font-size: 0.95rem;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    .services-banner {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      padding: 20px;
+      background: #f0f4ff;
+      border-radius: 10px;
+      margin: 25px 0;
+      border: 1px solid #d9e0ff;
+    }
+    
+    .banner-content {
+      flex: 1;
+      padding: 0 20px;
+    }
+    
+    .banner-icon {
+      font-size: 3rem;
+      color: #6c5ce7;
+      background: #e6e8ff;
+      width: 80px;
+      height: 80px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
+    
+    .banner-content h3 {
+      color: #5d4aec;
+      margin-bottom: 10px;
+    }
+    
+    .banner-content ul {
+      text-align: right;
+      list-style-type: none;
+      padding-right: 20px;
+    }
+    
+    .banner-content li {
+      margin-bottom: 8px;
+      position: relative;
+      padding-right: 20px;
+    }
+    
+    .banner-content li::before {
+      content: "•";
+      color: #6c5ce7;
+      position: absolute;
+      right: 0;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      
+      h2 {
+        font-size: 1.9rem;
+      }
+      
+      .center-card {
+        padding: 20px;
+      }
+      
+      .phone-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .call-btn, .copy-btn {
+        flex: 1;
+        justify-content: center;
+        padding: 12px;
+      }
+      
+      .services-banner {
+        flex-direction: column;
+        text-align: center;
+      }
+      
+      .banner-icon {
+        margin-bottom: 20px;
+      }
+      
+      .banner-content ul {
+        text-align: center;
+        padding-right: 0;
+      }
+      
+      .banner-content li {
+        padding-right: 0;
+      }
+      
+      .banner-content li::before {
+        display: none;
+      }
+    }
+    
+    .map-link {
+      display: inline-block;
+      margin-top: 10px;
+      color: #6c5ce7;
+      text-decoration: none;
+      font-weight: 500;
+      transition: color 0.3s;
+    }
+    
+    .map-link:hover {
+      color: #5d4aec;
+      text-decoration: underline;
+    }
+    
+    .note-box {
+      background: #fff8e6;
+      border-left: 4px solid #ffb300;
+      padding: 15px;
+      border-radius: 0 8px 8px 0;
+      margin: 20px 0;
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2><i class="fas fa-x-ray"></i> دليل مراكز الأشعة في قنا والمناطق المجاورة</h2>
+      <p class="subtitle">الدليل الشامل لمراكز الأشعة التشخيصية والرنين المغناطيسي والتصوير الطبي في محافظة قنا</p>
+    </header>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="number">15</div>
+        <div class="label">مركز أشعة</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">26</div>
+        <div class="label">رقم اتصال</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">5</div>
+        <div class="label">مناطق خدمة</div>
+      </div>
+    </div>
+    
+    <div class="services-banner">
+      <div class="banner-icon">
+        <i class="fas fa-medkit"></i>
+      </div>
+      <div class="banner-content">
+        <h3>خدمات الأشعة المتوفرة</h3>
+        <ul>
+          <li>الأشعة العادية (X-Ray)</li>
+          <li>الأشعة المقطعية (CT Scan)</li>
+          <li>الرنين المغناطيسي (MRI)</li>
+          <li>أشعة الثدي (Mammography)</li>
+          <li>الأشعة الملونة (Contrast)</li>
+          <li>أشعة العظام والعمود الفقري</li>
+          <li>أشعة الأسنان والفكين</li>
+        </ul>
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن مركز أشعة بالاسم أو العنوان أو المنطقة...">
+        <button id="searchBtn"><i class="fas fa-search"></i> بحث</button>
+      </div>
+    </div>
+    
+    <div class="note-box">
+      <p><strong>ملاحظة:</strong> يُرجى الاتصال بالمركز قبل التوجه للتأكد من مواعيد العمل والمتطلبات اللازمة للفحص</p>
+    </div>
+    
+    <div class="center-list">
+      <!-- مراكز الأشعة في قنا -->
+      <div class="center-card">
+        <span class="location-tag">قنا</span>
+        <p class="center-name">مركز القرآن للأشعة</p>
+        <p class="center-address">قنا - شارع الجميل</p>
+        <div class="phone-container">
+          <span class="phone-number">0963327700</span>
+          <div class="actions">
+            <a href="tel:0963327700" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0963327700')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01221356710</span>
+          <div class="actions">
+            <a href="tel:01221356710" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01221356710')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="special-features">
+          <span class="feature"><i class="fas fa-brain"></i> أشعة مقطعية</span>
+          <span class="feature"><i class="fas fa-bone"></i> أشعة عظام</span>
+          <span class="feature"><i class="fas fa-teeth"></i> أشعة أسنان</span>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">قنا</span>
+        <p class="center-name">مركز هي للأشعة (للسيدات فقط)</p>
+        <p class="center-address">قنا - أمام المستشفى العام - برج تبارك</p>
+        <div class="phone-container">
+          <span class="phone-number">01095030870</span>
+          <div class="actions">
+            <a href="tel:01095030870" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01095030870')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01276622602</span>
+          <div class="actions">
+            <a href="tel:01276622602" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01276622602')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="special-features">
+          <span class="feature"><i class="fas fa-female"></i> للسيدات فقط</span>
+          <span class="feature"><i class="fas fa-venus"></i> أشعة نسائية</span>
+          <span class="feature"><i class="fas fa-user-md"></i> فنيّات إناث</span>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">قنا</span>
+        <p class="center-name">مركز د. محمد عاشور للأشعة</p>
+        <p class="center-address">قنا - شارع 23 يوليو - عمارة الخديوي</p>
+        <div class="phone-container">
+          <span class="phone-number">0963326443</span>
+          <div class="actions">
+            <a href="tel:0963326443" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0963326443')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="special-features">
+          <span class="feature"><i class="fas fa-x-ray"></i> أشعة متخصصة</span>
+          <span class="feature"><i class="fas fa-heartbeat"></i> أشعة قلبية</span>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">قنا</span>
+        <p class="center-name">مركز د. سعيدة محمد للأشعة</p>
+        <p class="center-address">قنا - شارع المستشارين - أمام صيدلية وليد</p>
+        <div class="phone-container">
+          <span class="phone-number">01095716764</span>
+          <div class="actions">
+            <a href="tel:01095716764" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01095716764')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">0963335431</span>
+          <div class="actions">
+            <a href="tel:0963335431" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0963335431')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="special-features">
+          <span class="feature"><i class="fas fa-lungs"></i> أشعة صدر</span>
+          <span class="feature"><i class="fas fa-procedures"></i> أشعة طوارئ</span>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">قنا</span>
+        <p class="center-name">مركز الأفيوني للأشعة</p>
+        <p class="center-address">قنا - أمام بوابة المستشفى العام</p>
+        <div class="phone-container">
+          <span class="phone-number">01091623253</span>
+          <div class="actions">
+            <a href="tel:01091623253" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01091623253')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="special-features">
+          <span class="feature"><i class="fas fa-hospital"></i> قرب المستشفى العام</span>
+          <span class="feature"><i class="fas fa-clock"></i> خدمة 24 ساعة</span>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">قنا</span>
+        <p class="center-name">مركز الحياة للأشعة</p>
+        <p class="center-address">قنا - أعلى خير زمان</p>
+        <div class="phone-container">
+          <span class="phone-number">01093866721</span>
+          <div class="actions">
+            <a href="tel:01093866721" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01093866721')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- مراكز في نجع حمادي -->
+      <div class="center-card">
+        <span class="location-tag">نجع حمادي</span>
+        <p class="center-name">مركز النيل لأشعة العيون</p>
+        <p class="center-address">نجع حمادي - كورنيش النيل - برج موسى</p>
+        <div class="phone-container">
+          <span class="phone-number">0962587095</span>
+          <div class="actions">
+            <a href="tel:0962587095" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0962587095')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01091948604</span>
+          <div class="actions">
+            <a href="tel:01091948604" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01091948604')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="special-features">
+          <span class="feature"><i class="fas fa-eye"></i> أشعة عيون متخصصة</span>
+          <span class="feature"><i class="fas fa-eye-dropper"></i> فحوصات الشبكية</span>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">نجع حمادي</span>
+        <p class="center-name">مركز د. علي عطية للأشعة</p>
+        <p class="center-address">نجع حمادي - شارع المحطة - أمام زغلول الحلواني</p>
+        <div class="phone-container">
+          <span class="phone-number">01098488864</span>
+          <div class="actions">
+            <a href="tel:01098488864" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01098488864')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01151250717</span>
+          <div class="actions">
+            <a href="tel:01151250717" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01151250717')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01091861153</span>
+          <div class="actions">
+            <a href="tel:01091861153" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01091861153')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">نجع حمادي</span>
+        <p class="center-name">مركز الروضة</p>
+        <p class="center-address">نجع حمادي - عمارة الأوقاف - خلف نادي الزراعيين</p>
+        <div class="phone-container">
+          <span class="phone-number">01022990951</span>
+          <div class="actions">
+            <a href="tel:01022990951" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01022990951')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">نجع حمادي</span>
+        <p class="center-name">مركز الفتح</p>
+        <p class="center-address">نجع حمادي - شارع المحطة - مسجد النجدة - أمام بنك مصر</p>
+        <div class="phone-container">
+          <span class="phone-number">01093019946</span>
+          <div class="actions">
+            <a href="tel:01093019946" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01093019946')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">0966595800</span>
+          <div class="actions">
+            <a href="tel:0966595800" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0966595800')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- مراكز في دشنا -->
+      <div class="center-card">
+        <span class="location-tag">دشنا</span>
+        <p class="center-name">مركز د. عمر أبو القاسم للأشعة</p>
+        <p class="center-address">دشنا - الطريق السريع - أمام جامع السادات</p>
+        <div class="phone-container">
+          <span class="phone-number">01009497324</span>
+          <div class="actions">
+            <a href="tel:01009497324" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01009497324')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">0962742725</span>
+          <div class="actions">
+            <a href="tel:0962742725" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0962742725')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">دشنا</span>
+        <p class="center-name">وحدة الأشعة المقطعية</p>
+        <p class="center-address">دشنا - الطريق السريع - بجوار قاعة مسايا</p>
+        <div class="phone-container">
+          <span class="phone-number">0962750377</span>
+          <div class="actions">
+            <a href="tel:0962750377" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0962750377')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="special-features">
+          <span class="feature"><i class="fas fa-cogs"></i> أشعة مقطعية متقدمة</span>
+          <span class="feature"><i class="fas fa-head-side-mask"></i> فحوصات الرأس</span>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">دشنا</span>
+        <p class="center-name">مركز النخبة للأشعة</p>
+        <p class="center-address">دشنا - الصعابدة - بجوار كوبري السكة الحديد الجديد</p>
+        <div class="phone-container">
+          <span class="phone-number">01016761336</span>
+          <div class="actions">
+            <a href="tel:01016761336" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01016761336')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01551342568</span>
+          <div class="actions">
+            <a href="tel:01551342568" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01551342568')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <!-- مراكز أخرى -->
+      <div class="center-card">
+        <span class="location-tag">قفط</span>
+        <p class="center-name">مركز الرواد للأشعة</p>
+        <p class="center-address">قفط - كوبري المرور - جسر العوضيات - أمام صيدلية د. حنان</p>
+        <div class="phone-container">
+          <span class="phone-number">01003245520</span>
+          <div class="actions">
+            <a href="tel:01003245520" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01003245520')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="center-card">
+        <span class="location-tag">نقادة</span>
+        <p class="center-name">مركز الصفوة للأشعة</p>
+        <p class="center-address">نقادة - أمام عيادة د. يحيى العبد</p>
+        <div class="phone-container">
+          <span class="phone-number">01010026710</span>
+          <div class="actions">
+            <a href="tel:01010026710" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01010026710')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01558684454</span>
+          <div class="actions">
+            <a href="tel:01558684454" class="call-btn"><i class="fas fa-phone"></i> اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01558684454')"><i class="fas fa-copy"></i> نسخ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>© 2025 دليل مراكز الأشعة في محافظة قنا | تم التحديث في يوليو 2025</p>
+      <p>جميع المعلومات مقدمة كمرجع عام، يُرجى الاتصال بالمركز للتأكد من دقة البيانات ومواعيد العمل</p>
+    </footer>
+  </div>
+  
+  <script>
+    // دالة نسخ الرقم
+    function copyNumber(number) {
+      navigator.clipboard.writeText(number).then(() => {
+        alert('تم نسخ الرقم: ' + number);
+      });
+    }
+    
+    // وظيفة البحث
+    document.getElementById('searchBtn').addEventListener('click', searchCenters);
+    document.getElementById('searchInput').addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        searchCenters();
+      }
+    });
+    
+    function searchCenters() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const centerCards = document.querySelectorAll('.center-card');
+      let found = false;
+      
+      centerCards.forEach(card => {
+        const name = card.querySelector('.center-name').textContent.toLowerCase();
+        const address = card.querySelector('.center-address').textContent.toLowerCase();
+        const location = card.querySelector('.location-tag').textContent.toLowerCase();
+        
+        if (name.includes(searchTerm) || address.includes(searchTerm) || location.includes(searchTerm)) {
+          card.style.display = 'block';
+          found = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (!found && searchTerm) {
+        alert('لم يتم العثور على مراكز تطابق بحثك');
+      }
+    }
+  </script>
+</body>
+</html>

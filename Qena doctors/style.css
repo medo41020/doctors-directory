@@ -1,0 +1,62 @@
+body {
+  font-family: 'Arial', sans-serif;
+  direction: rtl;
+  background-color: #f9f9f9;
+  margin: 0;
+  padding: 20px;
+}
+
+.container {
+  max-width: 700px;
+  margin: 0 auto;
+}
+
+h2 {
+  text-align: center;
+  margin-bottom: 30px;
+}
+
+.doctor-card {
+  background-color: #ffffff;
+  border-radius: 12px;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.1);
+  padding: 15px;
+  margin-bottom: 20px;
+  text-align: right;
+  line-height: 1.7;
+}
+
+.doctor-card p {
+  margin: 5px 0;
+  font-size: 18px;
+}
+
+.call-btn, .copy-btn {
+  display: inline-block;
+  margin: 10px 5px 0 0;
+  padding: 10px 20px;
+  border-radius: 8px;
+  font-size: 16px;
+  text-decoration: none;
+  border: none;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.call-btn {
+  background-color: #000;
+  color: #fff;
+}
+
+.copy-btn {
+  background-color: #6e3b8f;
+  color: #fff;
+}
+
+.call-btn:hover {
+  background-color: #333;
+}
+
+.copy-btn:hover {
+  background-color: #572c72;
+}
