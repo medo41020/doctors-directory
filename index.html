@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         :root {
-            --primary: #5d69b3; /* لون رئيسي متناسق */
+            --primary: #5d69b3;
             --accent: #f8fafc;
             --dark: #2d3748;
             --light: #ffffff;
@@ -17,9 +17,10 @@
             --card-hover: #f7fafc;
             
             /* ألوان الفروع المتناسقة */
-            --hijaza-color: #e84393; /* وردي غامق */
-            --qus-color: #6c5ce7; /* بنفسجي */
-            --qena-color: #00b894; /* أخضر فيروزي */
+            --hijaza-color: #e84393;
+            --qus-color: #6c5ce7;
+            --qena-color: #00b894;
+            --luxor-color: #f39c12; /* لون جديد للأقصر (ذهبي) */
         }
         
         * {
@@ -76,10 +77,22 @@
         }
         
         .branches-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+            display: flex;
+            flex-direction: column;
             gap: 30px;
             margin-top: 50px;
+        }
+        
+        .top-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
+        }
+        
+        .bottom-row {
+            display: flex;
+            gap: 30px;
+            justify-content: center;
         }
         
         .branch-card {
@@ -89,6 +102,15 @@
             box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             transition: all 0.3s ease;
             position: relative;
+            display: flex;
+            flex-direction: column;
+            width: 100%;
+            max-width: 400px;
+        }
+        
+        .branch-card.small {
+            width: 400px;
+            height: 350px;
         }
         
         .branch-card:hover {
@@ -100,7 +122,7 @@
             padding: 25px;
             color: white;
             position: relative;
-            min-height: 180px;
+            min-height: 150px;
             display: flex;
             flex-direction: column;
             justify-content: center;
@@ -116,7 +138,6 @@
             background: linear-gradient(135deg, rgba(0,0,0,0.2) 0%, rgba(0,0,0,0) 100%);
         }
         
-        /* تعديل ترتيب الفروع والألوان */
         .hijaza-header {
             background: linear-gradient(135deg, var(--hijaza-color), #fd79a8);
         }
@@ -129,41 +150,64 @@
             background: linear-gradient(135deg, var(--qena-color), #55efc4);
         }
         
-        .branch-icon {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
+        .luxor-header {
+            background: linear-gradient(135deg, var(--luxor-color), #fdcb6e);
             position: relative;
+            overflow: hidden;
         }
         
-        .branch-title {
-            font-size: 1.8rem;
+        /* شريط "قريباً" */
+        .coming-soon {
+            position: absolute;
+            top: 15px;
+            left: -35px;
+            background-color: #e74c3c;
+            color: white;
+            padding: 5px 40px;
+            font-weight: bold;
+            transform: rotate(-45deg);
+            font-size: 0.85rem;
+            box-shadow: 0 2px 10px rgba(0,0,0,0.2);
+        }
+        
+        .branch-icon {
+            font-size: 2.2rem;
             margin-bottom: 10px;
             position: relative;
         }
         
+        .branch-title {
+            font-size: 1.6rem;
+            margin-bottom: 8px;
+            position: relative;
+        }
+        
         .branch-description {
-            font-size: 1rem;
+            font-size: 0.95rem;
             opacity: 0.9;
             position: relative;
         }
         
         .branch-body {
-            padding: 25px;
+            padding: 20px;
+            flex-grow: 1;
+            display: flex;
+            flex-direction: column;
         }
         
         .branch-stats {
             display: flex;
             justify-content: space-around;
             text-align: center;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
         
         .stat {
-            padding: 10px;
+            padding: 8px;
         }
         
         .stat-number {
-            font-size: 1.8rem;
+            font-size: 1.6rem;
             font-weight: bold;
             margin-bottom: 5px;
         }
@@ -180,8 +224,13 @@
             color: var(--qena-color);
         }
         
+        .luxor-stat {
+            color: var(--luxor-color);
+            opacity: 0.7;
+        }
+        
         .stat-label {
-            font-size: 0.9rem;
+            font-size: 0.85rem;
             color: var(--text-light);
         }
         
@@ -193,9 +242,10 @@
             color: white;
             text-decoration: none;
             font-weight: bold;
-            font-size: 1.1rem;
+            font-size: 1rem;
             transition: all 0.3s;
-            margin-top: 15px;
+            margin-top: 10px;
+            position: relative;
         }
         
         .hijaza-btn {
@@ -208,6 +258,12 @@
         
         .qena-btn {
             background: var(--qena-color);
+        }
+        
+        .luxor-btn {
+            background: var(--luxor-color);
+            cursor: not-allowed;
+            opacity: 0.8;
         }
         
         .branch-btn:hover {
@@ -223,13 +279,31 @@
             border-top: 1px solid #e2e8f0;
         }
         
-        @media (max-width: 768px) {
-            .branches-container {
-                grid-template-columns: 1fr;
+        @media (max-width: 900px) {
+            .top-row,
+            .bottom-row {
+                flex-direction: column;
+                align-items: center;
             }
             
+            .branch-card.small {
+                width: 100%;
+                max-width: 400px;
+                height: auto;
+            }
+        }
+        
+        @media (max-width: 768px) {
             h1 {
                 font-size: 2.2rem;
+            }
+            
+            .container {
+                padding: 15px;
+            }
+            
+            .branch-card {
+                margin-bottom: 20px;
             }
         }
     </style>
@@ -237,85 +311,111 @@
 <body>
     <div class="container">
         <header>
-            <h1><i class="fas fa-heartbeat"></i>    الدليل الطبي الشامل للأطباء</h1>
-            <p></p>      </p>
-
-            <h1></i>   </h1>
-        
-
-
+            <h1><i class="fas fa-heartbeat"></i> الدليل الطبي الشامل للأطباء</h1>
+            <p class="subtitle">أفضل دليل طبي شامل يضم أبرز الأطباء والمتخصصين في محافظة قنا وجارٍ التوسع</p>
         </header>
         
         <div class="branches-container">
-            <!-- بطاقة فرع حجازة (الأول الآن) -->
-            <div class="branch-card">
-                <div class="branch-header hijaza-header">
-                    <div class="branch-icon"><i class="fas fa-hospital-user"></i></div>
-                    <h2 class="branch-title">أطباء حجازة</h2>
-                    <p class="branch-description">الدليل الطبي الشامل لأطباء مستشفى حجازة</p>
-                </div>
-                <div class="branch-body">
-                    <div class="branch-stats">
-                        <div class="stat">
-                            <div class="stat-number hijaza-stat">13</div>
-                            <div class="stat-label">تخصص طبي</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number hijaza-stat">80+</div>
-                            <div class="stat-label">طبيب متخصص</div>
-                        </div>
+            <!-- صف البطاقات العلوي (حجازة وقوص) -->
+            <div class="top-row">
+                <!-- بطاقة فرع حجازة -->
+                <div class="branch-card small">
+                    <div class="branch-header hijaza-header">
+                        <div class="branch-icon"><i class="fas fa-hospital-user"></i></div>
+                        <h2 class="branch-title">أطباء حجازة</h2>
+                        <p class="branch-description">الدليل الطبي الشامل لأطباء مستشفى حجازة</p>
                     </div>
-                    <a href="./Higaza-doctors/Higaza.html" class="branch-btn hijaza-btn">
-                        <i class="fas fa-arrow-left"></i> عرض دليل أطباء حجازة
-                    </a>
+                    <div class="branch-body">
+                        <div class="branch-stats">
+                            <div class="stat">
+                                <div class="stat-number hijaza-stat">13</div>
+                                <div class="stat-label">تخصص طبي</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number hijaza-stat">80+</div>
+                                <div class="stat-label">طبيب متخصص</div>
+                            </div>
+                        </div>
+                        <a href="./Higaza-doctors/Higaza.html" class="branch-btn hijaza-btn">
+                            <i class="fas fa-arrow-left"></i> عرض دليل أطباء حجازة
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- بطاقة فرع قوص -->
+                <div class="branch-card small">
+                    <div class="branch-header qus-header">
+                        <div class="branch-icon"><i class="fas fa-clinic-medical"></i></div>
+                        <h2 class="branch-title">أطباء قوص</h2>
+                        <p class="branch-description">الدليل الطبي الشامل لأطباء مركز قوص</p>
+                    </div>
+                    <div class="branch-body">
+                        <div class="branch-stats">
+                            <div class="stat">
+                                <div class="stat-number qus-stat">16</div>
+                                <div class="stat-label">تخصص طبي</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number qus-stat">120+</div>
+                                <div class="stat-label">طبيب متخصص</div>
+                            </div>
+                        </div>
+                        <a href="./Qus doctors/Qus.html" class="branch-btn qus-btn">
+                            <i class="fas fa-arrow-left"></i> عرض دليل أطباء قوص
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <!-- بطاقة فرع قوص -->
-            <div class="branch-card">
-                <div class="branch-header qus-header">
-                    <div class="branch-icon"><i class="fas fa-clinic-medical"></i></div>
-                    <h2 class="branch-title">أطباء قوص</h2>
-                    <p class="branch-description">الدليل الطبي الشامل لأطباء مركز قوص</p>
-                </div>
-                <div class="branch-body">
-                    <div class="branch-stats">
-                        <div class="stat">
-                            <div class="stat-number qus-stat">16</div>
-                            <div class="stat-label">تخصص طبي</div>
-                        </div>
-                        <div class="stat">
-                            <div class="stat-number qus-stat">120+</div>
-                            <div class="stat-label">طبيب متخصص</div>
-                        </div>
+            <!-- صف البطاقات السفلي (قنا والأقصر) -->
+            <div class="bottom-row">
+                <!-- بطاقة فرع قنا -->
+                <div class="branch-card small">
+                    <div class="branch-header qena-header">
+                        <div class="branch-icon"><i class="fas fa-hospital-alt"></i></div>
+                        <h2 class="branch-title">أطباء قنا</h2>
+                        <p class="branch-description">الدليل الطبي الشامل لأطباء محافظة قنا</p>
                     </div>
-                    <a href="./Qus doctors/Qus.html" class="branch-btn qus-btn">
-                        <i class="fas fa-arrow-left"></i> عرض دليل أطباء قوص
-                    </a>
-                </div>
-            </div>
-            
-            <!-- بطاقة فرع قنا -->
-            <div class="branch-card">
-                <div class="branch-header qena-header">
-                    <div class="branch-icon"><i class="fas fa-hospital-alt"></i></div>
-                    <h2 class="branch-title">أطباء قنا</h2>
-                    <p class="branch-description">الدليل الطبي الشامل لأطباء محافظة قنا</p>
-                </div>
-                <div class="branch-body">
-                    <div class="branch-stats">
-                        <div class="stat">
-                            <div class="stat-number qena-stat">15</div>
-                            <div class="stat-label">تخصص طبي</div>
+                    <div class="branch-body">
+                        <div class="branch-stats">
+                            <div class="stat">
+                                <div class="stat-number qena-stat">15</div>
+                                <div class="stat-label">تخصص طبي</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number qena-stat">90+</div>
+                                <div class="stat-label">طبيب متخصص</div>
+                            </div>
                         </div>
-                        <div class="stat">
-                            <div class="stat-number qena-stat">90+</div>
-                            <div class="stat-label">طبيب متخصص</div>
-                        </div>
+                        <a href="./Qena doctors/Qena.html" class="branch-btn qena-btn">
+                            <i class="fas fa-arrow-left"></i> عرض دليل أطباء قنا
+                        </a>
                     </div>
-                    <a href="./Qena doctors/Qena.html" class="branch-btn qena-btn">
-                        <i class="fas fa-arrow-left"></i> عرض دليل أطباء قنا
-                    </a>
+                </div>
+                
+                <!-- بطاقة فرع الأقصر الجديدة -->
+                <div class="branch-card small">
+                    <div class="branch-header luxor-header">
+                        <div class="coming-soon">قريباً</div>
+                        <div class="branch-icon"><i class="fas fa-hourglass-half"></i></div>
+                        <h2 class="branch-title">أطباء الأقصر</h2>
+                        <p class="branch-description">جاري تجميع بيانات الأطباء</p>
+                    </div>
+                    <div class="branch-body">
+                        <div class="branch-stats">
+                            <div class="stat">
+                                <div class="stat-number luxor-stat">--</div>
+                                <div class="stat-label">تخصص طبي</div>
+                            </div>
+                            <div class="stat">
+                                <div class="stat-number luxor-stat">--</div>
+                                <div class="stat-label">طبيب متخصص</div>
+                            </div>
+                        </div>
+                        <a href="#" class="branch-btn luxor-btn">
+                            <i class="fas fa-clock"></i> قريباً
+                        </a>
+                    </div>
                 </div>
             </div>
         </div>
