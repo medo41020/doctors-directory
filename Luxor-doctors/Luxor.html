@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>دليل أطباء قوص حسب التخصصات</title>
+    <title>دليل أطباء الأقصر حسب التخصصات</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Tajawal:wght@400;500;700;900&display=swap" rel="stylesheet">
     <style>
@@ -22,22 +22,18 @@
             --border: #e2e8f0;
             
             /* ألوان التخصصات */
-            --bones-Qus: #8b5cf6;
-            --centers-Qus: #7c3aed;
-            --chest-Qus: #0ea5e9;
-            --children-Qus: #ec4899;
-            --dentist-Qus: #f59e0b;
-            --ent-Qus: #10b981;
-            --eyes-Qus: #06b6d4;
-            --heart-Qus: #ef4444;
-            --internal-Qus: #f97316;
-            --neuro-Qus: #6366f1;
-            --nutrition-Qus: #14b8a6;
-            --skin-Qus: #d946ef;
-            --surgery-Qus: #f43f5e;
-            --therapy-Qus: #0d9488;
-            --urology-Qus: #8b5cf6;
-            --women-Qus: #ec4899;
+            --bones: #8b5cf6;
+            --chest: #0ea5e9;
+            --children: #ec4899;
+            --dentist: #f59e0b;
+            --ent: #10b981;
+            --eyes: #06b6d4;
+            --internal: #ef4444;
+            --neuro: #6366f1;
+            --skin: #f97316;
+            --surgery: #d946ef;
+            --urology: #14b8a6;
+            --women: #f43f5e;
         }
 
         * {
@@ -340,84 +336,64 @@
         }
 
         /* ألوان التخصصات الفردية */
-        .specialty-bones-Qus {
-            --card-color: var(--bones-Qus);
+        .specialty-bones {
+            --card-color: var(--bones);
             --card-color-light: #9c72f7;
         }
 
-        .specialty-centers-Qus {
-            --card-color: var(--centers-Qus);
-            --card-color-light: #8e5ff7;
-        }
-
-        .specialty-chest-Qus {
-            --card-color: var(--chest-Qus);
+        .specialty-chest {
+            --card-color: var(--chest);
             --card-color-light: #26b0f1;
         }
 
-        .specialty-children-Qus {
-            --card-color: var(--children-Qus);
+        .specialty-children {
+            --card-color: var(--children);
             --card-color-light: #f05fb6;
         }
 
-        .specialty-dentist-Qus {
-            --card-color: var(--dentist-Qus);
+        .specialty-dentist {
+            --card-color: var(--dentist);
             --card-color-light: #f7b348;
         }
 
-        .specialty-ent-Qus {
-            --card-color: var(--ent-Qus);
+        .specialty-ent {
+            --card-color: var(--ent);
             --card-color-light: #34d399;
         }
 
-        .specialty-eyes-Qus {
-            --card-color: var(--eyes-Qus);
+        .specialty-eyes {
+            --card-color: var(--eyes);
             --card-color-light: #22d3ee;
         }
 
-        .specialty-heart-Qus {
-            --card-color: var(--heart-Qus);
+        .specialty-internal {
+            --card-color: var(--internal);
             --card-color-light: #f87171;
         }
 
-        .specialty-internal-Qus {
-            --card-color: var(--internal-Qus);
-            --card-color-light: #fa8e3e;
-        }
-
-        .specialty-neuro-Qus {
-            --card-color: var(--neuro-Qus);
+        .specialty-neuro {
+            --card-color: var(--neuro);
             --card-color-light: #8183f2;
         }
 
-        .specialty-nutrition-Qus {
-            --card-color: var(--nutrition-Qus);
-            --card-color-light: #2dd4bf;
+        .specialty-skin {
+            --card-color: var(--skin);
+            --card-color-light: #fa8e3e;
         }
 
-        .specialty-skin-Qus {
-            --card-color: var(--skin-Qus);
+        .specialty-surgery {
+            --card-color: var(--surgery);
             --card-color-light: #e072f1;
         }
 
-        .specialty-surgery-Qus {
-            --card-color: var(--surgery-Qus);
-            --card-color-light: #f75b7c;
-        }
-
-        .specialty-therapy-Qus {
-            --card-color: var(--therapy-Qus);
+        .specialty-urology {
+            --card-color: var(--urology);
             --card-color-light: #2dd4bf;
         }
 
-        .specialty-urology-Qus {
-            --card-color: var(--urology-Qus);
-            --card-color-light: #9c72f7;
-        }
-
-        .specialty-women-Qus {
-            --card-color: var(--women-Qus);
-            --card-color-light: #f05fb6;
+        .specialty-women {
+            --card-color: var(--women);
+            --card-color-light: #f75b7c;
         }
 
         /* الفوتر */
@@ -486,10 +462,6 @@
         .specialty-card:nth-child(10) { animation-delay: 1s; }
         .specialty-card:nth-child(11) { animation-delay: 1.1s; }
         .specialty-card:nth-child(12) { animation-delay: 1.2s; }
-        .specialty-card:nth-child(13) { animation-delay: 1.3s; }
-        .specialty-card:nth-child(14) { animation-delay: 1.4s; }
-        .specialty-card:nth-child(15) { animation-delay: 1.5s; }
-        .specialty-card:nth-child(16) { animation-delay: 1.6s; }
 
         /* التكيف مع الشاشات الصغيرة */
         @media (max-width: 768px) {
@@ -528,21 +500,22 @@
 <body>
     <div class="container">
         <header class="header">
-            <h1><i class="fas fa-hospital-alt"></i> دليل أطباء قوص</h1>
-            <p>البوابة الشاملة للعثور على أفضل الأطباء المتخصصين بمدينة قوص</p>
+            <h1><i class="fas fa-hospital-alt"></i> دليل أطباء الأقصر</h1>
+            <p>البوابة الشاملة للعثور على أفضل الأطباء المتخصصين في محافظة الأقصر</p>
         </header>
         
-        
+     
+            </div>
         </div>
         
         <!-- الإحصائيات -->
         <div class="stats">
             <div class="stat-card">
-                <div class="number">16</div>
+                <div class="number">12</div>
                 <div class="label">تخصص طبي</div>
             </div>
             <div class="stat-card">
-                <div class="number">90+</div>
+                <div class="number">75+</div>
                 <div class="label">طبيب متخصص</div>
             </div>
             <div class="stat-card">
@@ -558,283 +531,214 @@
         <!-- التخصصات الطبية -->
         <div class="specialties-container">
             <!-- العظام -->
-            <div class="specialty-card specialty-bones-Qus">
+            <div class="specialty-card specialty-bones">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-bone"></i></div>
-                        <h3 class="specialty-name">أمراض العظام - قوص</h3>
+                        <h3 class="specialty-name">أمراض العظام</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-bone"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">10 أطباء متخصصين</span>
-                    <p class="specialty-description">تشخيص وعلاج أمراض العظام والمفاصل والكسور وجراحات العمود الفقري بقوص.</p>
-                    <a href="bones-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
-                </div>
-            </div>
-            
-            <!-- المراكز الطبية -->
-            <div class="specialty-card specialty-centers-Qus">
-                <div class="specialty-header">
-                    <div class="specialty-header-content">
-                        <div class="specialty-icon"><i class="fas fa-clinic-medical"></i></div>
-                        <h3 class="specialty-name">المراكز الطبية - قوص</h3>
-                    </div>
-                    <div class="specialty-icon-bg"><i class="fas fa-clinic-medical"></i></div>
-                    <div class="specialty-dots">•••</div>
-                </div>
-                <div class="specialty-body">
-                    <span class="doctor-count">8 مراكز طبية</span>
-                    <p class="specialty-description">أهم المراكز والمستوصفات الطبية المتخصصة في قوص.</p>
-                    <a href="centers-qus.html" class="specialty-link"><i class="fas fa-hospital"></i> عرض المراكز</a>
+                    <span class="doctor-count">12 طبيب متخصص</span>
+                    <p class="specialty-description">تشخيص وعلاج أمراض العظام والمفاصل والكسور وجراحات العمود الفقري.</p>
+                    <a href="bones.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الصدر -->
-            <div class="specialty-card specialty-chest-Qus">
+            <div class="specialty-card specialty-chest">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-lungs"></i></div>
-                        <h3 class="specialty-name">أمراض الصدر - قوص</h3>
+                        <h3 class="specialty-name">أمراض الصدر</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-lungs"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">7 أطباء متخصصين</span>
-                    <p class="specialty-description">تشخيص وعلاج أمراض الجهاز التنفسي والرئتين بقوص.</p>
-                    <a href="chest-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">8 أطباء متخصصين</span>
+                    <p class="specialty-description">تشخيص وعلاج أمراض الجهاز التنفسي والرئتين والحساسية الصدرية.</p>
+                    <a href="chest.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الأطفال -->
-            <div class="specialty-card specialty-children-Qus">
+            <div class="specialty-card specialty-children">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-baby"></i></div>
-                        <h3 class="specialty-name">طب الأطفال - قوص</h3>
+                        <h3 class="specialty-name">طب الأطفال</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-baby"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">12 طبيب متخصص</span>
-                    <p class="specialty-description">رعاية صحية شاملة للأطفال من الولادة حتى سن المراهقة بقوص.</p>
-                    <a href="children-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">15 طبيب متخصص</span>
+                    <p class="specialty-description">رعاية صحية شاملة للأطفال من الولادة حتى سن المراهقة.</p>
+                    <a href="children.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الأسنان -->
-            <div class="specialty-card specialty-dentist-Qus">
+            <div class="specialty-card specialty-dentist">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-tooth"></i></div>
-                        <h3 class="specialty-name">طب الأسنان - قوص</h3>
+                        <h3 class="specialty-name">طب الأسنان</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-tooth"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">15 طبيب أسنان</span>
-                    <p class="specialty-description">علاج الأسنان واللثة وتركيبات الأسنان وتقويم الأسنان بقوص.</p>
-                    <a href="dentist-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">20 طبيب أسنان</span>
+                    <p class="specialty-description">علاج الأسنان واللثة وتركيبات الأسنان وتقويم الأسنان وعلاج الجذور.</p>
+                    <a href="dentist.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الأنف والأذن -->
-            <div class="specialty-card specialty-ent-Qus">
+            <div class="specialty-card specialty-ent">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-head-side-cough"></i></div>
-                        <h3 class="specialty-name">أنف وأذن وحنجرة - قوص</h3>
+                        <h3 class="specialty-name">أنف وأذن وحنجرة</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-head-side-cough"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">6 أطباء متخصصين</span>
-                    <p class="specialty-description">تشخيص وعلاج أمراض الأنف والأذن والحنجرة بقوص.</p>
-                    <a href="ent-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">10 أطباء متخصصين</span>
+                    <p class="specialty-description">تشخيص وعلاج أمراض الأنف والأذن والحنجرة وجراحاتها.</p>
+                    <a href="ent.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- العيون -->
-            <div class="specialty-card specialty-eyes-Qus">
+            <div class="specialty-card specialty-eyes">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-eye"></i></div>
-                        <h3 class="specialty-name">طب العيون - قوص</h3>
+                        <h3 class="specialty-name">طب العيون</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-eye"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">5 أطباء متخصصين</span>
-                    <p class="specialty-description">فحص النظر وعلاج أمراض العيون بقوص.</p>
-                    <a href="eyes-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
-                </div>
-            </div>
-            
-            <!-- القلب -->
-            <div class="specialty-card specialty-heart-Qus">
-                <div class="specialty-header">
-                    <div class="specialty-header-content">
-                        <div class="specialty-icon"><i class="fas fa-heartbeat"></i></div>
-                        <h3 class="specialty-name">أمراض القلب - قوص</h3>
-                    </div>
-                    <div class="specialty-icon-bg"><i class="fas fa-heartbeat"></i></div>
-                    <div class="specialty-dots">•••</div>
-                </div>
-                <div class="specialty-body">
-                    <span class="doctor-count">4 أطباء متخصصين</span>
-                    <p class="specialty-description">تشخيص وعلاج أمراض القلب والأوعية الدموية بقوص.</p>
-                    <a href="heart-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">7 أطباء متخصصين</span>
+                    <p class="specialty-description">فحص النظر وعلاج أمراض العيون وجراحات تصحيح الإبصار.</p>
+                    <a href="eyes.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الباطنة -->
-            <div class="specialty-card specialty-internal-Qus">
+            <div class="specialty-card specialty-internal">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-stethoscope"></i></div>
-                        <h3 class="specialty-name">الباطنة - قوص</h3>
+                        <h3 class="specialty-name">الباطنة</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-stethoscope"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">14 طبيب متخصص</span>
-                    <p class="specialty-description">تشخيص وعلاج الأمراض الداخلية للبالغين بقوص.</p>
-                    <a href="internal-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">18 طبيب متخصص</span>
+                    <p class="specialty-description">تشخيص وعلاج الأمراض الداخلية للبالغين وأمراض الجهاز الهضمي والكبد.</p>
+                    <a href="internal.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الأعصاب -->
-            <div class="specialty-card specialty-neuro-Qus">
+            <div class="specialty-card specialty-neuro">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-brain"></i></div>
-                        <h3 class="specialty-name">الأعصاب - قوص</h3>
+                        <h3 class="specialty-name">الأعصاب</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-brain"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">3 أطباء متخصصين</span>
-                    <p class="specialty-description">تشخيص وعلاج أمراض الجهاز العصبي بقوص.</p>
-                    <a href="neuro-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
-                </div>
-            </div>
-            
-            <!-- التغذية -->
-            <div class="specialty-card specialty-nutrition-Qus">
-                <div class="specialty-header">
-                    <div class="specialty-header-content">
-                        <div class="specialty-icon"><i class="fas fa-utensils"></i></div>
-                        <h3 class="specialty-name">التغذية - قوص</h3>
-                    </div>
-                    <div class="specialty-icon-bg"><i class="fas fa-utensils"></i></div>
-                    <div class="specialty-dots">•••</div>
-                </div>
-                <div class="specialty-body">
-                    <span class="doctor-count">5 أخصائيين</span>
-                    <p class="specialty-description">استشارات تغذية وعلاج السمنة والنحافة بقوص.</p>
-                    <a href="nutrition-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأخصائيين</a>
+                    <span class="doctor-count">6 أطباء متخصصين</span>
+                    <p class="specialty-description">تشخيص وعلاج أمراض الجهاز العصبي والدماغ والنخاع الشوكي.</p>
+                    <a href="neuro.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الجلدية -->
-            <div class="specialty-card specialty-skin-Qus">
+            <div class="specialty-card specialty-skin">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-allergies"></i></div>
-                        <h3 class="specialty-name">الجلدية - قوص</h3>
+                        <h3 class="specialty-name">الجلدية</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-allergies"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">6 أطباء متخصصين</span>
-                    <p class="specialty-description">علاج الأمراض الجلدية والتجميل والليزر بقوص.</p>
-                    <a href="skin-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">9 أطباء متخصصين</span>
+                    <p class="specialty-description">علاج الأمراض الجلدية والتجميل والليزر وزراعة الشعر.</p>
+                    <a href="skin.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- الجراحة -->
-            <div class="specialty-card specialty-surgery-Qus">
+            <div class="specialty-card specialty-surgery">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-cut"></i></div>
-                        <h3 class="specialty-name">الجراحة - قوص</h3>
+                        <h3 class="specialty-name">الجراحة</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-cut"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">8 أطباء جراحين</span>
-                    <p class="specialty-description">جراحات عامة وجراحات المناظير بقوص.</p>
-                    <a href="surgery-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
-                </div>
-            </div>
-            
-            <!-- العلاج الطبيعي -->
-            <div class="specialty-card specialty-therapy-Qus">
-                <div class="specialty-header">
-                    <div class="specialty-header-content">
-                        <div class="specialty-icon"><i class="fas fa-spa"></i></div>
-                        <h3 class="specialty-name">العلاج الطبيعي - قوص</h3>
-                    </div>
-                    <div class="specialty-icon-bg"><i class="fas fa-spa"></i></div>
-                    <div class="specialty-dots">•••</div>
-                </div>
-                <div class="specialty-body">
-                    <span class="doctor-count">7 أخصائيين</span>
-                    <p class="specialty-description">جلسات العلاج الطبيعي وإعادة التأهيل بقوص.</p>
-                    <a href="therapy-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأخصائيين</a>
+                    <span class="doctor-count">12 طبيب جراح</span>
+                    <p class="specialty-description">جراحات عامة وجراحات المناظير وجراحات الأورام وجراحات السمنة.</p>
+                    <a href="surgery.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- المسالك البولية -->
-            <div class="specialty-card specialty-urology-Qus">
+            <div class="specialty-card specialty-urology">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-procedures"></i></div>
-                        <h3 class="specialty-name">المسالك البولية - قوص</h3>
+                        <h3 class="specialty-name">المسالك البولية</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-procedures"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">4 أطباء متخصصين</span>
-                    <p class="specialty-description">تشخيص وعلاج أمراض الجهاز البولي بقوص.</p>
-                    <a href="urology-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">7 أطباء متخصصين</span>
+                    <p class="specialty-description">تشخيص وعلاج أمراض الجهاز البولي والتناسلي للرجال والنساء.</p>
+                    <a href="urology.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
             
             <!-- النساء والتوليد -->
-            <div class="specialty-card specialty-women-Qus">
+            <div class="specialty-card specialty-women">
                 <div class="specialty-header">
                     <div class="specialty-header-content">
                         <div class="specialty-icon"><i class="fas fa-female"></i></div>
-                        <h3 class="specialty-name">النساء والتوليد - قوص</h3>
+                        <h3 class="specialty-name">النساء والتوليد</h3>
                     </div>
                     <div class="specialty-icon-bg"><i class="fas fa-female"></i></div>
                     <div class="specialty-dots">•••</div>
                 </div>
                 <div class="specialty-body">
-                    <span class="doctor-count">9 أطباء متخصصين</span>
-                    <p class="specialty-description">رعاية الحوامل وعلاج أمراض النساء بقوص.</p>
-                    <a href="women-qus.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
+                    <span class="doctor-count">14 طبيب متخصص</span>
+                    <p class="specialty-description">رعاية الحوامل وعلاج أمراض النساء وجراحات النساء والتوليد.</p>
+                    <a href="women.html" class="specialty-link"><i class="fas fa-user-md"></i> عرض الأطباء</a>
                 </div>
             </div>
         </div>
         
         <!-- الفوتر -->
         <footer>
-            <p>جميع الحقوق محفوظة &copy; دليل أطباء قوص 2025</p>
-            <div class="contact-bar">
-           
+            <p>جميع الحقوق محفوظة &copy; دليل أطباء الأقصر 2025</p>
+      
             </div>
         </footer>
     </div>
