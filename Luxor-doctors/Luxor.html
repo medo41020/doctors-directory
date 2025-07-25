@@ -14,11 +14,11 @@
         }
         
         :root {
-            --primary: #4361ee; /* أزرق ملكي */
-            --primary-light: #4895ef; /* أزرق سماوي */
-            --primary-dark: #3a0ca3; /* أزرق داكن */
-            --secondary: #7209b7; /* بنفسجي */
-            --accent: #f72585; /* وردي فاتح */
+            --primary: #4361ee;
+            --primary-light: #4895ef;
+            --primary-dark: #3a0ca3;
+            --secondary: #7209b7;
+            --accent: #f72585;
             --light: #f8f9fa;
             --dark: #212529;
             --text: #2b2d42;
@@ -26,10 +26,10 @@
             --card-bg: #ffffff;
             --card-hover: #f1f5f9;
             --section-bg: #edf2f4;
-            --emergency: #ef233c; /* أحمر طازج */
-            --success: #2ec4b6; /* فيروزي */
-            --orange: #ff9e00; /* برتقالي */
-            --green: #06d6a0; /* أخضر نيون */
+            --emergency: #ef233c;
+            --success: #2ec4b6;
+            --orange: #ff9e00;
+            --green: #06d6a0;
         }
         
         body {
@@ -50,7 +50,6 @@
             border-radius: 0 0 20px 20px;
         }
         
-        /* Header Styles */
         header {
             background: linear-gradient(120deg, var(--primary), var(--primary-dark));
             color: white;
@@ -138,7 +137,6 @@
             background: #d9046d;
         }
         
-        /* Main Content Styles */
         .main-content {
             padding: 3rem 2rem;
             max-width: 1400px;
@@ -215,162 +213,6 @@
             border-radius: 2px;
         }
         
-        .main-sections {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
-            gap: 30px;
-            margin-bottom: 3rem;
-        }
-        
-        .section-card {
-            background: var(--card-bg);
-            border-radius: 15px;
-            padding: 2rem;
-            position: relative;
-            overflow: hidden;
-            transition: all 0.3s ease;
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
-            border: 1px solid rgba(0, 0, 0, 0.05);
-        }
-        
-        .section-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
-        }
-        
-        .section-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 1.5rem;
-        }
-        
-        .section-icon {
-            width: 70px;
-            height: 70px;
-            border-radius: 18px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 2.2rem;
-            color: white;
-            margin-left: 20px;
-        }
-        
-        .section-card:nth-child(1) .section-icon { background: var(--primary); }
-        .section-card:nth-child(2) .section-icon { background: var(--success); }
-        .section-card:nth-child(3) .section-icon { background: var(--secondary); }
-        
-        .section-title-inner {
-            font-size: 1.8rem;
-            font-weight: 600;
-        }
-        
-        .section-card:nth-child(1) .section-title-inner { color: var(--primary); }
-        .section-card:nth-child(2) .section-title-inner { color: var(--success); }
-        .section-card:nth-child(3) .section-title-inner { color: var(--secondary); }
-        
-        .sub-specialties {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 15px;
-        }
-        
-        .specialty-card {
-            background: white;
-            border-radius: 12px;
-            padding: 1.2rem;
-            display: flex;
-            align-items: center;
-            gap: 15px;
-            transition: all 0.3s ease;
-            border: 1px solid rgba(0, 0, 0, 0.05);
-            text-decoration: none;
-            color: var(--text);
-            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
-        }
-        
-        .specialty-card:hover {
-            background: var(--card-hover);
-            transform: translateX(5px);
-            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
-        }
-        
-        .specialty-icon {
-            width: 45px;
-            height: 45px;
-            border-radius: 12px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.4rem;
-            color: white;
-        }
-        
-        .specialty-card:nth-child(1) .specialty-icon { background: var(--primary); }
-        .specialty-card:nth-child(2) .specialty-icon { background: var(--secondary); }
-        .specialty-card:nth-child(3) .specialty-icon { background: var(--success); }
-        .specialty-card:nth-child(4) .specialty-icon { background: var(--accent); }
-        .specialty-card:nth-child(5) .specialty-icon { background: var(--orange); }
-        
-        .specialty-name {
-            font-size: 1.15rem;
-            font-weight: 500;
-            flex: 1;
-        }
-        
-        /* Emergency Section */
-        .emergency-section {
-            background: linear-gradient(135deg, var(--emergency), #d00000);
-            border-radius: 15px;
-            padding: 2.5rem;
-            margin: 3rem 0;
-            text-align: center;
-            color: white;
-            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
-            position: relative;
-            overflow: hidden;
-        }
-        
-        .emergency-content {
-            position: relative;
-            z-index: 2;
-        }
-        
-        .emergency-section h2 {
-            font-size: 2.2rem;
-            margin-bottom: 1rem;
-            font-weight: 700;
-        }
-        
-        .emergency-section p {
-            font-size: 1.2rem;
-            max-width: 700px;
-            margin: 0 auto 1.8rem;
-            opacity: 0.9;
-        }
-        
-        .emergency-btn {
-            display: inline-flex;
-            align-items: center;
-            background: white;
-            color: var(--emergency);
-            text-decoration: none;
-            padding: 0.9rem 2.5rem;
-            border-radius: 50px;
-            font-size: 1.2rem;
-            font-weight: 700;
-            transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-            gap: 10px;
-        }
-        
-        .emergency-btn:hover {
-            background: #f8f9fa;
-            transform: translateY(-3px);
-            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
-        }
-        
-        /* Other Specialties */
         .other-specialties {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
@@ -435,104 +277,57 @@
             color: var(--text-light);
         }
         
-        /* Featured Section */
-        .featured-section {
-            background: linear-gradient(135deg, #edf2f4, #e2eafc);
-            border-radius: 20px;
-            padding: 3rem;
-            margin: 4rem 0;
+        .emergency-section {
+            background: linear-gradient(135deg, var(--emergency), #d00000);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 3rem 0;
+            text-align: center;
+            color: white;
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
             position: relative;
             overflow: hidden;
-            border: 1px solid rgba(67, 97, 238, 0.15);
         }
         
-        .featured-header {
-            text-align: center;
-            margin-bottom: 2.5rem;
+        .emergency-content {
+            position: relative;
+            z-index: 2;
         }
         
-        .featured-header h2 {
-            font-size: 2.3rem;
-            color: var(--primary-dark);
-            margin-bottom: 0.5rem;
+        .emergency-section h2 {
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
         
-        .featured-header p {
-            font-size: 1.1rem;
-            color: var(--text-light);
+        .emergency-section p {
+            font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto;
+            margin: 0 auto 1.8rem;
+            opacity: 0.9;
         }
         
-        .featured-cards {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 25px;
-        }
-        
-        .featured-card {
-            background: white;
-            border-radius: 15px;
-            overflow: hidden;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
-            transition: all 0.3s ease;
-        }
-        
-        .featured-card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
-        }
-        
-        .featured-img {
-            height: 180px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 4rem;
-            color: white;
-        }
-        
-        .featured-card:nth-child(1) .featured-img { background: linear-gradient(120deg, var(--primary), var(--primary-light)); }
-        .featured-card:nth-child(2) .featured-img { background: linear-gradient(120deg, var(--secondary), #8a2be2); }
-        .featured-card:nth-child(3) .featured-img { background: linear-gradient(120deg, var(--success), #06d6a0); }
-        
-        .featured-content {
-            padding: 1.8rem;
-        }
-        
-        .featured-content h3 {
-            font-size: 1.5rem;
-            margin-bottom: 0.8rem;
-        }
-        
-        .featured-card:nth-child(1) .featured-content h3 { color: var(--primary); }
-        .featured-card:nth-child(2) .featured-content h3 { color: var(--secondary); }
-        .featured-card:nth-child(3) .featured-content h3 { color: var(--success); }
-        
-        .featured-content p {
-            color: var(--text-light);
-            margin-bottom: 1.2rem;
-            line-height: 1.6;
-        }
-        
-        .featured-link {
+        .emergency-btn {
             display: inline-flex;
             align-items: center;
-            font-weight: 600;
+            background: white;
+            color: var(--emergency);
             text-decoration: none;
-            gap: 8px;
+            padding: 0.9rem 2.5rem;
+            border-radius: 50px;
+            font-size: 1.2rem;
+            font-weight: 700;
             transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            gap: 10px;
         }
         
-        .featured-card:nth-child(1) .featured-link { color: var(--primary); }
-        .featured-card:nth-child(2) .featured-link { color: var(--secondary); }
-        .featured-card:nth-child(3) .featured-link { color: var(--success); }
-        
-        .featured-link:hover {
-            gap: 12px;
+        .emergency-btn:hover {
+            background: #f8f9fa;
+            transform: translateY(-3px);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
         
-        /* Footer Styles */
         footer {
             background: var(--primary-dark);
             color: white;
@@ -644,10 +439,6 @@
             .section-title h2 {
                 font-size: 2rem;
             }
-            
-            .main-sections {
-                grid-template-columns: 1fr;
-            }
         }
         
         @media (max-width: 768px) {
@@ -675,30 +466,12 @@
                 padding: 2rem 1.5rem;
             }
             
-            .section-card {
-                padding: 1.5rem;
-            }
-            
-            .section-icon {
-                width: 60px;
-                height: 60px;
-                font-size: 1.8rem;
-            }
-            
-            .section-title-inner {
-                font-size: 1.5rem;
-            }
-            
             .emergency-section {
                 padding: 1.8rem;
             }
             
             .emergency-section h2 {
                 font-size: 1.8rem;
-            }
-            
-            .featured-section {
-                padding: 2rem;
             }
             
             .footer-content {
@@ -713,6 +486,29 @@
             
             .footer-links a {
                 justify-content: center;
+            }
+            
+            /* التعديلات الجديدة لبطاقات التخصصات */
+            .other-specialties {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .other-card {
+                padding: 1.5rem 1rem;
+            }
+            
+            .other-icon {
+                font-size: 2.2rem;
+                margin-bottom: 1rem;
+            }
+            
+            .other-name {
+                font-size: 1.2rem;
+            }
+            
+            .other-desc {
+                font-size: 0.85rem;
             }
         }
         
@@ -739,8 +535,21 @@
                 font-size: 1.1rem;
             }
             
+            /* تعديلات إضافية لشاشات صغيرة جدًا */
             .other-specialties {
-                grid-template-columns: 1fr;
+                gap: 12px;
+            }
+            
+            .other-card {
+                padding: 1.2rem 0.8rem;
+            }
+            
+            .other-icon {
+                font-size: 2rem;
+            }
+            
+            .other-name {
+                font-size: 1.1rem;
             }
         }
         
@@ -760,7 +569,6 @@
         .delay-4 { animation-delay: 0.4s; }
         .delay-5 { animation-delay: 0.5s; }
         
-        /* Floating elements */
         @keyframes float {
             0% { transform: translateY(0px); }
             50% { transform: translateY(-10px); }
@@ -775,7 +583,6 @@
         .floating-2 { animation-delay: 1s; }
         .floating-3 { animation-delay: 2s; }
         
-        /* Search results */
         .search-results {
             display: none;
             position: absolute;
@@ -830,7 +637,12 @@
                 <h1><i class="fas fa-hospital-alt floating floating-1"></i> دليل التخصصات الطبية في الأقصر</h1>
                 <p class="subtitle">بوابة شاملة للعثور على أفضل الأطباء والمستشفيات والخدمات الطبية في مدينة الأقصر</p>
                 
-             
+                <div class="search-container">
+                    <div class="search-box">
+                        <input type="text" id="doctorSearch" placeholder="ابحث عن طبيب أو تخصص...">
+                        <button id="searchBtn"><i class="fas fa-search"></i> بحث</button>
+                    </div>
+                    <div class="search-results" id="searchResults"></div>
                 </div>
             </div>
         </header>
@@ -851,8 +663,8 @@
                 </div>
             </div>
             
-       
-                </div>
+            <div class="section-title">
+                <h2>التخصصات الطبية المتاحة</h2>
             </div>
             
             <div class="other-specialties">
@@ -946,7 +758,14 @@
                     <p class="other-desc">جراحات عامة وتخصصية</p>
                 </a>
                 
-       
+                <!-- القلب -->
+                <a href="heart-Luxor.html" class="other-card animated delay-1">
+                    <div class="other-icon">
+                        <i class="fas fa-heartbeat"></i>
+                    </div>
+                    <h3 class="other-name">القلب</h3>
+                    <p class="other-desc">أمراض القلب والشرايين</p>
+                </a>
                 
                 <!-- المسالك البولية -->
                 <a href="urology-Luxor.html" class="other-card animated delay-2">
@@ -967,7 +786,7 @@
                 </a>
             </div>
             
-            
+        </div>
         
         <footer>
             <div class="footer-content">
@@ -1023,7 +842,6 @@
     </div>
     
     <script>
-        // بيانات الأطباء (يجب استبدالها ببياناتك الفعلية)
         const doctors = [
             {name: "د. أحمد محمود", specialty: "العظام", link: "bones-Luxor.html#ahmed-mahmoud"},
             {name: "د. محمد علي", specialty: "الباطنة", link: "internal-Luxor.html#mohamed-ali"},
@@ -1040,7 +858,6 @@
         const searchResults = document.getElementById('searchResults');
         const searchBtn = document.getElementById('searchBtn');
 
-        // البحث أثناء الكتابة
         searchInput.addEventListener('input', function() {
             const searchTerm = this.value.trim().toLowerCase();
             searchResults.innerHTML = '';
@@ -1077,14 +894,12 @@
             searchResults.style.display = 'block';
         });
 
-        // إخفاء نتائج البحث عند النقر خارجها
         document.addEventListener('click', function(e) {
             if (!searchInput.contains(e.target) && !searchResults.contains(e.target)) {
                 searchResults.style.display = 'none';
             }
         });
 
-        // البحث عند الضغط على زر البحث
         searchBtn.addEventListener('click', function() {
             const searchTerm = searchInput.value.trim().toLowerCase();
             if (searchTerm.length > 0) {
@@ -1098,7 +913,6 @@
             }
         });
 
-        // تأثيرات تفاعلية للبطاقات
         document.querySelectorAll('.specialty-card, .other-card').forEach(card => {
             card.addEventListener('mouseenter', () => {
                 card.style.transform = 'scale(1.03)';
@@ -1109,7 +923,6 @@
             });
         });
         
-        // إضافة تأثيرات الظهور التدريجي
         document.addEventListener('DOMContentLoaded', function() {
             const animatedElements = document.querySelectorAll('.animated');
             

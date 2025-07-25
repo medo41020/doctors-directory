@@ -716,6 +716,29 @@
             .footer-links a {
                 justify-content: center;
             }
+            
+            /* التعديلات المطلوبة فقط لبطاقات التخصصات الأخرى */
+            .other-specialties {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 15px;
+            }
+            
+            .other-card {
+                padding: 1.2rem 0.8rem;
+            }
+            
+            .other-icon {
+                font-size: 2rem;
+                margin-bottom: 0.8rem;
+            }
+            
+            .other-name {
+                font-size: 1.1rem;
+            }
+            
+            .other-desc {
+                font-size: 0.8rem;
+            }
         }
         
         @media (max-width: 480px) {
@@ -741,8 +764,21 @@
                 font-size: 1.1rem;
             }
             
+            /* تعديلات إضافية لشاشات صغيرة جداً */
             .other-specialties {
-                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .other-card {
+                padding: 1rem 0.6rem;
+            }
+            
+            .other-icon {
+                font-size: 1.8rem;
+            }
+            
+            .other-name {
+                font-size: 1rem;
             }
         }
         
@@ -786,10 +822,7 @@
                 <h1><i class="fas fa-heartbeat floating floating-1"></i> دليل التخصصات الطبية في محافظة قنا</h1>
                 <p class="subtitle">بوابة شاملة للعثور على أفضل الأطباء والمستشفيات والخدمات الطبية في محافظة قنا ومراكزها</p>
                 
-               
-                       
-                    </div>
-                    <div id="searchResults" class="search-results"></div>
+             
                 </div>
             </div>
         </header>
@@ -809,8 +842,6 @@
                     <div class="label">مركز طبي</div>
                 </div>
             </div>
-            
-    
             
             <!-- Main Sections -->
             <div class="section-title">
@@ -930,8 +961,6 @@
                         </a>
                     </div>
                 </div>
-            </div>
-    
             </div>
             
             <!-- Other Specialties -->
@@ -1072,7 +1101,7 @@
                     <div class="other-icon">
                         <i class="fas fa-hospital"></i>
                     </div>
-                    <h3 class="other-name">المستشفيات</h3>
+                    <h3 class="other-name">المراكز الطبية والمستشفيات </h3>
                     <p class="other-desc">أفضل المستشفيات في محافظة قنا</p>
                 </a>
                 
@@ -1128,7 +1157,14 @@
                     </ul>
                 </div>
                 
-              
+                <div class="footer-links-section">
+                    <h3 class="footer-title">تواصل معنا</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> اتصل بنا</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> الأسئلة الشائعة</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> الشكاوى والمقترحات</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> أضف طبيب/مركز</a></li>
+                    </ul>
                 </div>
             </div>
             
