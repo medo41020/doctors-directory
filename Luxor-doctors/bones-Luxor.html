@@ -1,0 +1,575 @@
+<!DOCTYPE html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>أطباء العظام - في الأقصر</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+    
+    body {
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #f8f9fa, #e9ecef);
+      color: #343a40;
+      line-height: 1.7;
+      padding: 20px;
+      min-height: 100vh;
+    }
+    
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      background: white;
+      border-radius: 15px;
+      box-shadow: 0 8px 25px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      padding: 30px;
+    }
+    
+    header {
+      text-align: center;
+      padding: 25px 0;
+      margin-bottom: 25px;
+      background: linear-gradient(120deg, #007bff, #0056b3);
+      border-radius: 12px;
+      color: white;
+      position: relative;
+      overflow: hidden;
+    }
+    
+    header::before {
+      content: "";
+      position: absolute;
+      top: -50%;
+      left: -50%;
+      width: 200%;
+      height: 200%;
+      background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
+      transform: rotate(30deg);
+    }
+    
+    h2 {
+      font-size: 2.2rem;
+      margin-bottom: 10px;
+      text-shadow: 0 2px 4px rgba(0,0,0,0.2);
+    }
+    
+    .subtitle {
+      font-size: 1.1rem;
+      opacity: 0.9;
+      max-width: 600px;
+      margin: 0 auto;
+    }
+    
+    .stats {
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      margin: 20px 0;
+      flex-wrap: wrap;
+    }
+    
+    .stat-card {
+      background: white;
+      border-radius: 10px;
+      padding: 12px 20px;
+      text-align: center;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.08);
+      min-width: 130px;
+      border: 1px solid #e9ecef;
+    }
+    
+    .stat-card .number {
+      font-size: 1.6rem;
+      font-weight: bold;
+      color: #007bff;
+    }
+    
+    .stat-card .label {
+      font-size: 0.9rem;
+      color: #6c757d;
+    }
+    
+    .search-container {
+      background: #f8f9fa;
+      padding: 15px;
+      border-radius: 12px;
+      margin: 20px 0;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.05);
+      border: 1px solid #e9ecef;
+    }
+    
+    .search-box {
+      display: flex;
+      max-width: 100%;
+    }
+    
+    .search-box input {
+      flex: 1;
+      padding: 12px 18px;
+      border: 2px solid #007bff;
+      border-radius: 50px 0 0 50px;
+      font-size: 1rem;
+      outline: none;
+      background: white;
+    }
+    
+    .search-box button {
+      background: #007bff;
+      color: white;
+      border: none;
+      padding: 0 22px;
+      border-radius: 0 50px 50px 0;
+      cursor: pointer;
+      font-size: 1rem;
+      transition: background 0.3s;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+    
+    .search-box button:hover {
+      background: #0069d9;
+    }
+    
+    .doctor-list {
+      margin-top: 30px;
+    }
+    
+    .doctor-card {
+      background: white;
+      border-radius: 12px;
+      box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+      padding: 20px;
+      margin-bottom: 20px;
+      text-align: right;
+      transition: transform 0.3s, box-shadow 0.3s;
+      border-left: 4px solid #007bff;
+      position: relative;
+    }
+    
+    .doctor-card:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.12);
+    }
+    
+    .doctor-name {
+      color: #212529;
+      font-weight: bold;
+      font-size: 1.3rem;
+      margin-bottom: 10px;
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    
+    .doctor-name::before {
+      content: "👨‍⚕️";
+      font-size: 1.2rem;
+    }
+    
+    .doctor-address {
+      font-size: 1rem;
+      color: #495057;
+      margin-bottom: 15px;
+      padding-bottom: 15px;
+      border-bottom: 1px dashed #e9ecef;
+      line-height: 1.6;
+    }
+    
+    .phone-container {
+      margin-bottom: 12px;
+      display: flex;
+      align-items: center;
+      justify-content: flex-end;
+      flex-wrap: wrap;
+      gap: 10px;
+    }
+    
+    .phone-number {
+      font-size: 1.1rem;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      background: #f8f9fa;
+      padding: 8px 15px;
+      border-radius: 8px;
+      border: 1px solid #e9ecef;
+      flex: 1;
+      min-width: 200px;
+    }
+    
+    .phone-number::before {
+      content: "📞";
+      margin-left: 5px;
+    }
+    
+    .actions {
+      display: flex;
+      gap: 10px;
+    }
+    
+    .call-btn, .copy-btn {
+      border: none;
+      border-radius: 8px;
+      padding: 8px 16px;
+      font-size: 0.95rem;
+      font-weight: 600;
+      cursor: pointer;
+      display: inline-flex;
+      align-items: center;
+      gap: 6px;
+      transition: all 0.3s;
+    }
+    
+    .call-btn {
+      background: #007bff;
+      color: #fff;
+    }
+    
+    .call-btn:hover {
+      background: #0069d9;
+    }
+    
+    .copy-btn {
+      background: #495057;
+      color: #fff;
+    }
+    
+    .copy-btn:hover {
+      background: #343a40;
+    }
+    
+    footer {
+      text-align: center;
+      padding: 25px 0 10px;
+      margin-top: 30px;
+      color: #6c757d;
+      font-size: 0.9rem;
+      border-top: 1px solid #e9ecef;
+    }
+    
+    @media (max-width: 768px) {
+      .container {
+        padding: 15px;
+      }
+      
+      h2 {
+        font-size: 1.8rem;
+      }
+      
+      .doctor-card {
+        padding: 15px;
+      }
+      
+      .phone-container {
+        flex-direction: column;
+        align-items: stretch;
+      }
+      
+      .actions {
+        width: 100%;
+        justify-content: space-between;
+      }
+      
+      .call-btn, .copy-btn {
+        flex: 1;
+        justify-content: center;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="container">
+    <header>
+      <h2>🦴 أطباء العظام في الأقصر</h2>
+      <p class="subtitle">الدليل الشامل لأطباء العظام في الأقصر مع وسائل الاتصال المباشر</p>
+    </header>
+    
+    <div class="stats">
+      <div class="stat-card">
+        <div class="number">16</div>
+        <div class="label">طبيب عظام</div>
+      </div>
+      <div class="stat-card">
+        <div class="number">18</div>
+        <div class="label">رقم اتصال</div>
+      </div>
+    </div>
+    
+    <div class="search-container">
+      <div class="search-box">
+        <input type="text" id="searchInput" placeholder="ابحث عن طبيب بالاسم...">
+        <button id="searchBtn">🔍 بحث</button>
+      </div>
+    </div>
+    
+    <div class="doctor-list">
+      <!-- أطباء الأقصر -->
+      <div class="doctor-card">
+        <p class="doctor-name">د/ حمدي حسن أحمد</p>
+        <div class="doctor-address">الأقصر - شارع بدر متفرع من شارع التليفزيون</div>
+        <div class="phone-container">
+          <span class="phone-number">01062646088</span>
+          <div class="actions">
+            <a href="tel:01062646088" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01062646088')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ أحمد أبو القاسم عمر</p>
+        <div class="doctor-address">الأقصر - شارع عبده متفرع من شارع المطحن</div>
+        <div class="phone-container">
+          <span class="phone-number">01270333880</span>
+          <div class="actions">
+            <a href="tel:01270333880" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01270333880')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ عمرو أحمد حسين</p>
+        <div class="doctor-address">الأقصر - شارع سيدي عبد الرحيم متفرع من شارع التليفزيون</div>
+        <div class="phone-container">
+          <span class="phone-number">01221547435</span>
+          <div class="actions">
+            <a href="tel:01221547435" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01221547435')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ حسام العزب</p>
+        <div class="doctor-address">الأقصر - جزيرة العوامية، مركز الأقصر</div>
+        <div class="phone-container">
+          <span class="phone-number">01113023738</span>
+          <div class="actions">
+            <a href="tel:01113023738" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01113023738')">📋 نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">0952270012</span>
+          <div class="actions">
+            <a href="tel:0952270012" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0952270012')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ أحمد إسماعيل</p>
+        <div class="doctor-address">الأقصر</div>
+        <div class="phone-container">
+          <span class="phone-number">01111511738</span>
+          <div class="actions">
+            <a href="tel:01111511738" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01111511738')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ أحمد سراج</p>
+        <div class="doctor-address">الأقصر - شارع هلال السباعي</div>
+        <div class="phone-container">
+          <span class="phone-number">01001106871</span>
+          <div class="actions">
+            <a href="tel:01001106871" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01001106871')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ محمود عمر عبد العزيز</p>
+        <div class="doctor-address">الأقصر - شارع زمزم متفرع من شارع المدينة المنورة</div>
+        <div class="phone-container">
+          <span class="phone-number">01001003714</span>
+          <div class="actions">
+            <a href="tel:01001003714" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01001003714')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ ياسر محمد يحيى الملواني</p>
+        <div class="doctor-address">الأقصر - شارع مكة متفرع من شارع التليفزيون</div>
+        <div class="phone-container">
+          <span class="phone-number">01098329893</span>
+          <div class="actions">
+            <a href="tel:01098329893" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01098329893')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ مايكل مجلي رياض منقريوس</p>
+        <div class="doctor-address">الأقصر - شارع عبد المنعم العديسي</div>
+        <div class="phone-container">
+          <span class="phone-number">01152449004</span>
+          <div class="actions">
+            <a href="tel:01152449004" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01152449004')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ فيصل فهمي</p>
+        <div class="doctor-address">الأقصر - شارع عبد المنعم العديسي</div>
+        <div class="phone-container">
+          <span class="phone-number">01065226967</span>
+          <div class="actions">
+            <a href="tel:01065226967" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01065226967')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ سهري بولس مرقص</p>
+        <div class="doctor-address">الأقصر - حارة الجزلر، شارع رمسيس</div>
+        <div class="phone-container">
+          <span class="phone-number">0952373410</span>
+          <div class="actions">
+            <a href="tel:0952373410" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0952373410')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ عبد الحميد الغزالي</p>
+        <div class="phone-container">
+          <span class="phone-number">01062374912</span>
+          <div class="actions">
+            <a href="tel:01062374912" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01062374912')">📋 نسخ</button>
+          </div>
+        </div>
+        <div class="phone-container">
+          <span class="phone-number">01061157132</span>
+          <div class="actions">
+            <a href="tel:01061157132" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01061157132')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ رفيق رمسيس عزيز</p>
+        <div class="doctor-address">الأقصر - شارع أبو الجود متفرع من شارع مطحن الاتحاد</div>
+        <div class="phone-container">
+          <span class="phone-number">01015088950</span>
+          <div class="actions">
+            <a href="tel:01015088950" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01015088950')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ وائل يوسف العادلي</p>
+        <div class="doctor-address">الأقصر - شارع المنشية</div>
+        <div class="phone-container">
+          <span class="phone-number">0952366222</span>
+          <div class="actions">
+            <a href="tel:0952366222" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('0952366222')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ كيرلس جمال</p>
+        <div class="doctor-address">الأقصر - منشأة العماري، بجوار الوحدة الصحية</div>
+        <div class="phone-container">
+          <span class="phone-number">01270401309</span>
+          <div class="actions">
+            <a href="tel:01270401309" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01270401309')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ ماجد موريس سليمان</p>
+        <div class="doctor-address">الأقصر - شارع المنشية، بجوار صيدلية الفردوس</div>
+        <div class="phone-container">
+          <span class="phone-number">01065573920</span>
+          <div class="actions">
+            <a href="tel:01065573920" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01065573920')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+      
+      <div class="doctor-card">
+        <p class="doctor-name">د/ إبراهيم قاسم يسين محمد</p>
+        <div class="doctor-address">الأقصر - حي الفيروز، خلف مستشفى الدولي</div>
+        <div class="phone-container">
+          <span class="phone-number">01148100850</span>
+          <div class="actions">
+            <a href="tel:01148100850" class="call-btn">📞 اتصال</a>
+            <button class="copy-btn" onclick="copyNumber('01148100850')">📋 نسخ</button>
+          </div>
+        </div>
+      </div>
+    </div>
+    
+    <footer>
+      <p>© 2025 دليل أطباء العظام في الأقصر | تم التحديث في يناير 2025</p>
+      <p>جميع المعلومات مقدمة كمرجع عام ولا تغني عن الاستشارة الطبية المتخصصة</p>
+    </footer>
+  </div>
+  
+  <script>
+    // دالة نسخ الرقم
+    function copyNumber(number) {
+      navigator.clipboard.writeText(number).then(() => {
+        alert('تم نسخ الرقم: ' + number);
+      });
+    }
+    
+    // وظيفة البحث
+    document.getElementById('searchBtn').addEventListener('click', searchDoctors);
+    document.getElementById('searchInput').addEventListener('keyup', function(event) {
+      if (event.key === 'Enter') {
+        searchDoctors();
+      }
+    });
+    
+    function searchDoctors() {
+      const searchTerm = document.getElementById('searchInput').value.toLowerCase();
+      const doctorCards = document.querySelectorAll('.doctor-card');
+      let found = false;
+      
+      doctorCards.forEach(card => {
+        const name = card.querySelector('.doctor-name').textContent.toLowerCase();
+        
+        if (name.includes(searchTerm)) {
+          card.style.display = 'block';
+          found = true;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+      
+      if (!found && searchTerm) {
+        alert('لم يتم العثور على أطباء يطابقون بحثك');
+      }
+    }
+  </script>
+</body>
+</html>

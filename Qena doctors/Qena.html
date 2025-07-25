@@ -14,310 +14,601 @@
         }
         
         :root {
-            --primary: #6a1b9a; /* لون موف رئيسي */
-            --primary-dark: #4a148c; /* موف داكن */
-            --secondary: #00897b; /* لون تول */
-            --secondary-light: #4db6ac; /* تول فاتح */
-            --accent: #ff4081; /* لون مميز */
-            --dark: #1a1a2e; /* خلفية داكنة */
+            --primary: #4361ee; /* أزرق ملكي */
+            --primary-light: #4895ef; /* أزرق سماوي */
+            --primary-dark: #3a0ca3; /* أزرق داكن */
+            --secondary: #7209b7; /* بنفسجي */
+            --accent: #f72585; /* وردي فاتح */
             --light: #f8f9fa;
-            --text: #e0e0e0;
-            --text-dark: #212121;
-            --card-bg: #252540;
-            --card-hover: #2d2d4a;
+            --dark: #212529;
+            --text: #2b2d42;
+            --text-light: #8d99ae;
+            --card-bg: #ffffff;
+            --card-hover: #f1f5f9;
+            --section-bg: #edf2f4;
+            --emergency: #ef233c; /* أحمر طازج */
+            --success: #2ec4b6; /* فيروزي */
+            --orange: #ff9e00; /* برتقالي */
+            --green: #06d6a0; /* أخضر نيون */
         }
         
         body {
-            background: linear-gradient(135deg, var(--dark), #16213e);
+            background-color: #f8f9fa;
+            background-image: linear-gradient(135deg, #f8f9fa 0%, #edf2f4 100%);
             color: var(--text);
             line-height: 1.7;
-            padding: 20px;
             min-height: 100vh;
+            padding: 0;
         }
         
         .container {
+            max-width: 1400px;
+            margin: 0 auto;
+            background: var(--light);
+            overflow: hidden;
+            box-shadow: 0 5px 30px rgba(0, 0, 0, 0.08);
+            border-radius: 0 0 20px 20px;
+        }
+        
+        /* Header Styles */
+        header {
+            background: linear-gradient(120deg, var(--primary), var(--primary-dark));
+            color: white;
+            padding: 2rem 0;
+            position: relative;
+            overflow: hidden;
+            text-align: center;
+        }
+        
+        .header-content {
             max-width: 1200px;
             margin: 0 auto;
-            background: rgba(26, 26, 46, 0.8);
-            border-radius: 15px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-            overflow: hidden;
-            padding: 30px;
+            padding: 0 2rem;
             position: relative;
-            backdrop-filter: blur(10px);
-            border: 1px solid rgba(106, 27, 154, 0.3);
+            z-index: 2;
         }
         
-        header {
-            text-align: center;
-            padding: 30px 0;
-            margin-bottom: 25px;
-            background: linear-gradient(120deg, var(--primary), var(--primary-dark));
-            border-radius: 12px;
-            color: white;
-            position: relative;
-            overflow: hidden;
-            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-        }
-        
-        header::before {
-            content: "";
+        .header-decor {
             position: absolute;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle, rgba(255,255,255,0.15) 0%, rgba(255,255,255,0) 70%);
-            transform: rotate(30deg);
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: 
+                radial-gradient(circle at 20% 30%, rgba(255,255,255,0.15) 0%, transparent 20%),
+                radial-gradient(circle at 80% 70%, rgba(255,255,255,0.15) 0%, transparent 20%);
         }
         
         h1 {
-            font-size: 2.6rem;
-            margin-bottom: 10px;
-            text-shadow: 0 2px 4px rgba(0,0,0,0.3);
+            font-size: 2.8rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
+            text-shadow: 0 2px 4px rgba(0,0,0,0.2);
         }
         
         .subtitle {
-            font-size: 1.2rem;
-            opacity: 0.9;
+            font-size: 1.3rem;
             max-width: 800px;
+            margin: 0 auto 1.5rem;
+            opacity: 0.9;
+        }
+        
+        .search-container {
+            max-width: 700px;
+            margin: 1.5rem auto 0;
+            position: relative;
+        }
+        
+        .search-box {
+            display: flex;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.15);
+        }
+        
+        .search-box input {
+            flex: 1;
+            padding: 1rem 1.5rem;
+            border: none;
+            font-size: 1.1rem;
+            outline: none;
+            background: rgba(255, 255, 255, 0.9);
+            color: var(--dark);
+        }
+        
+        .search-box input::placeholder {
+            color: var(--text-light);
+        }
+        
+        .search-box button {
+            background: var(--accent);
+            color: white;
+            border: none;
+            padding: 0 2rem;
+            cursor: pointer;
+            font-size: 1.1rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            transition: all 0.3s ease;
+        }
+        
+        .search-box button:hover {
+            background: #d9046d;
+        }
+        
+        /* Main Content Styles */
+        .main-content {
+            padding: 3rem 2rem;
+            max-width: 1400px;
             margin: 0 auto;
-            padding: 0 15px;
         }
         
         .stats {
             display: flex;
             justify-content: center;
-            gap: 20px;
-            margin: 25px 0;
+            gap: 25px;
+            margin: 2rem 0 3rem;
             flex-wrap: wrap;
         }
         
         .stat-card {
-            background: rgba(74, 20, 140, 0.3);
-            border-radius: 12px;
-            padding: 15px 25px;
+            background: white;
+            border-radius: 15px;
+            padding: 1.5rem 2rem;
             text-align: center;
-            min-width: 140px;
-            border: 1px solid rgba(106, 27, 154, 0.5);
-            transition: transform 0.3s;
-            backdrop-filter: blur(5px);
+            min-width: 160px;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+            border-bottom: 4px solid var(--primary);
         }
         
+        .stat-card:nth-child(1) { border-color: var(--primary); }
+        .stat-card:nth-child(2) { border-color: var(--secondary); }
+        .stat-card:nth-child(3) { border-color: var(--success); }
+        
         .stat-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.2);
-            background: rgba(74, 20, 140, 0.4);
+            transform: translateY(-8px);
+            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.15);
         }
         
         .stat-card .number {
-            font-size: 1.8rem;
-            font-weight: bold;
-            color: var(--secondary-light);
+            font-size: 2.2rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
         }
         
+        .stat-card:nth-child(1) .number { color: var(--primary); }
+        .stat-card:nth-child(2) .number { color: var(--secondary); }
+        .stat-card:nth-child(3) .number { color: var(--success); }
+        
         .stat-card .label {
-            font-size: 0.95rem;
-            color: #ccc;
+            font-size: 1.1rem;
+            color: var(--text-light);
+        }
+        
+        .section-title {
+            text-align: center;
+            margin: 3rem 0 2rem;
+            position: relative;
+            padding-bottom: 1rem;
+        }
+        
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--primary-dark);
+            font-weight: 700;
+            display: inline-block;
+            position: relative;
+        }
+        
+        .section-title h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 80px;
+            height: 4px;
+            background: var(--accent);
+            border-radius: 2px;
         }
         
         .main-sections {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-            gap: 25px;
-            margin-top: 40px;
+            grid-template-columns: repeat(auto-fit, minmax(380px, 1fr));
+            gap: 30px;
+            margin-bottom: 3rem;
         }
         
         .section-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 15px;
+            padding: 2rem;
             position: relative;
             overflow: hidden;
-            border-left: 5px solid var(--secondary);
             transition: all 0.3s ease;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .section-card:hover {
             transform: translateY(-5px);
-            box-shadow: 0 12px 25px rgba(0, 0, 0, 0.3);
-            background: var(--card-hover);
-            border-left: 5px solid var(--accent);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
         }
         
         .section-header {
             display: flex;
             align-items: center;
-            margin-bottom: 20px;
-            padding-bottom: 15px;
-            border-bottom: 2px solid rgba(77, 182, 172, 0.3);
+            margin-bottom: 1.5rem;
         }
         
         .section-icon {
-            width: 60px;
-            height: 60px;
-            background: rgba(0, 137, 123, 0.2);
-            border-radius: 50%;
+            width: 70px;
+            height: 70px;
+            border-radius: 18px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 2rem;
-            color: var(--secondary-light);
-            margin-left: 15px;
+            font-size: 2.2rem;
+            color: white;
+            margin-left: 20px;
         }
         
-        .section-title {
+        .section-card:nth-child(1) .section-icon { background: var(--primary); }
+        .section-card:nth-child(2) .section-icon { background: var(--success); }
+        .section-card:nth-child(3) .section-icon { background: var(--secondary); }
+        
+        .section-title-inner {
             font-size: 1.8rem;
-            color: var(--secondary-light);
-            font-weight: bold;
+            font-weight: 600;
         }
+        
+        .section-card:nth-child(1) .section-title-inner { color: var(--primary); }
+        .section-card:nth-child(2) .section-title-inner { color: var(--success); }
+        .section-card:nth-child(3) .section-title-inner { color: var(--secondary); }
         
         .sub-specialties {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             gap: 15px;
-            margin-top: 15px;
         }
         
         .specialty-card {
-            background: rgba(37, 37, 64, 0.7);
-            border-radius: 10px;
-            padding: 15px;
+            background: white;
+            border-radius: 12px;
+            padding: 1.2rem;
             display: flex;
             align-items: center;
-            gap: 12px;
-            transition: all 0.3s;
-            border: 1px solid rgba(106, 27, 154, 0.3);
+            gap: 15px;
+            transition: all 0.3s ease;
+            border: 1px solid rgba(0, 0, 0, 0.05);
             text-decoration: none;
+            color: var(--text);
+            box-shadow: 0 3px 10px rgba(0, 0, 0, 0.03);
         }
         
         .specialty-card:hover {
-            background: rgba(45, 45, 74, 0.9);
+            background: var(--card-hover);
             transform: translateX(5px);
-            border-color: var(--accent);
+            box-shadow: 0 8px 15px rgba(0, 0, 0, 0.08);
         }
         
         .specialty-icon {
-            width: 40px;
-            height: 40px;
-            background: rgba(106, 27, 154, 0.2);
-            border-radius: 50%;
+            width: 45px;
+            height: 45px;
+            border-radius: 12px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 1.2rem;
-            color: var(--accent);
+            font-size: 1.4rem;
+            color: white;
         }
         
+        .specialty-card:nth-child(1) .specialty-icon { background: var(--primary); }
+        .specialty-card:nth-child(2) .specialty-icon { background: var(--secondary); }
+        .specialty-card:nth-child(3) .specialty-icon { background: var(--success); }
+        .specialty-card:nth-child(4) .specialty-icon { background: var(--accent); }
+        .specialty-card:nth-child(5) .specialty-icon { background: var(--orange); }
+        
         .specialty-name {
-            font-size: 1.1rem;
+            font-size: 1.15rem;
             font-weight: 500;
-            color: var(--text);
             flex: 1;
         }
         
-        .specialty-link {
-            text-decoration: none;
-            color: var(--secondary-light);
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-        
+        /* Emergency Section */
         .emergency-section {
-            background: linear-gradient(135deg, #e91e63, #c2185b);
-            border-radius: 12px;
-            padding: 30px;
-            margin: 40px 0;
+            background: linear-gradient(135deg, var(--emergency), #d00000);
+            border-radius: 15px;
+            padding: 2.5rem;
+            margin: 3rem 0;
             text-align: center;
             color: white;
-            box-shadow: 0 8px 20px rgba(194, 24, 91, 0.3);
+            box-shadow: 0 10px 25px rgba(220, 38, 38, 0.3);
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .emergency-content {
+            position: relative;
+            z-index: 2;
         }
         
         .emergency-section h2 {
-            font-size: 2rem;
-            margin-bottom: 15px;
+            font-size: 2.2rem;
+            margin-bottom: 1rem;
+            font-weight: 700;
         }
         
         .emergency-section p {
-            font-size: 1.1rem;
+            font-size: 1.2rem;
             max-width: 700px;
-            margin: 0 auto 20px;
+            margin: 0 auto 1.8rem;
+            opacity: 0.9;
         }
         
         .emergency-btn {
-            display: inline-block;
+            display: inline-flex;
+            align-items: center;
             background: white;
-            color: #c2185b;
+            color: var(--emergency);
             text-decoration: none;
-            padding: 12px 30px;
+            padding: 0.9rem 2.5rem;
             border-radius: 50px;
             font-size: 1.2rem;
-            font-weight: 600;
-            transition: all 0.3s;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+            font-weight: 700;
+            transition: all 0.3s ease;
+            box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+            gap: 10px;
         }
         
         .emergency-btn:hover {
-            background: #f5f5f5;
+            background: #f8f9fa;
             transform: translateY(-3px);
-            box-shadow: 0 6px 15px rgba(0,0,0,0.25);
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.25);
         }
         
+        /* Other Specialties */
         .other-specialties {
             display: grid;
             grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
-            gap: 20px;
-            margin: 40px 0;
+            gap: 25px;
+            margin: 3rem 0;
         }
         
         .other-card {
             background: var(--card-bg);
-            border-radius: 12px;
-            padding: 25px;
+            border-radius: 15px;
+            padding: 2rem 1.5rem;
             text-align: center;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.2);
-            border-left: 4px solid var(--primary);
-            transition: all 0.3s;
+            box-shadow: 0 8px 20px rgba(0, 0, 0, 0.06);
+            transition: all 0.3s ease;
             height: 100%;
             text-decoration: none;
             display: block;
-            color: inherit;
+            color: var(--text);
+            border: 1px solid rgba(0, 0, 0, 0.05);
         }
         
         .other-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 10px 25px rgba(0,0,0,0.3);
+            transform: translateY(-8px);
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.1);
             background: var(--card-hover);
-            border-left: 4px solid var(--accent);
         }
         
         .other-icon {
-            font-size: 2.5rem;
-            color: var(--secondary-light);
-            margin-bottom: 15px;
+            font-size: 2.8rem;
+            margin-bottom: 1.2rem;
+            transition: all 0.3s ease;
         }
+        
+        .other-card:hover .other-icon {
+            transform: scale(1.1);
+        }
+        
+        .other-card:nth-child(1) .other-icon { color: var(--primary); }
+        .other-card:nth-child(2) .other-icon { color: var(--secondary); }
+        .other-card:nth-child(3) .other-icon { color: var(--success); }
+        .other-card:nth-child(4) .other-icon { color: var(--accent); }
+        .other-card:nth-child(5) .other-icon { color: var(--orange); }
+        .other-card:nth-child(6) .other-icon { color: var(--primary-light); }
+        .other-card:nth-child(7) .other-icon { color: var(--green); }
+        .other-card:nth-child(8) .other-icon { color: var(--secondary); }
+        .other-card:nth-child(9) .other-icon { color: var(--success); }
+        .other-card:nth-child(10) .other-icon { color: var(--accent); }
+        .other-card:nth-child(11) .other-icon { color: var(--primary); }
+        .other-card:nth-child(12) .other-icon { color: var(--secondary); }
+        .other-card:nth-child(13) .other-icon { color: var(--success); }
+        .other-card:nth-child(14) .other-icon { color: var(--accent); }
+        .other-card:nth-child(15) .other-icon { color: var(--primary); }
+        .other-card:nth-child(16) .other-icon { color: var(--secondary); }
+        .other-card:nth-child(17) .other-icon { color: var(--success); }
         
         .other-name {
             font-size: 1.4rem;
-            color: white;
-            margin-bottom: 15px;
+            font-weight: 600;
+            margin-bottom: 0.5rem;
         }
         
-        footer {
-            text-align: center;
-            padding: 30px 0 15px;
-            margin-top: 30px;
-            color: #aaa;
+        .other-desc {
             font-size: 0.95rem;
-            border-top: 1px solid rgba(106, 27, 154, 0.3);
+            color: var(--text-light);
+        }
+        
+        /* Featured Section */
+        .featured-section {
+            background: linear-gradient(135deg, #edf2f4, #e2eafc);
+            border-radius: 20px;
+            padding: 3rem;
+            margin: 4rem 0;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid rgba(67, 97, 238, 0.15);
+        }
+        
+        .featured-header {
+            text-align: center;
+            margin-bottom: 2.5rem;
+        }
+        
+        .featured-header h2 {
+            font-size: 2.3rem;
+            color: var(--primary-dark);
+            margin-bottom: 0.5rem;
+        }
+        
+        .featured-header p {
+            font-size: 1.1rem;
+            color: var(--text-light);
+            max-width: 700px;
+            margin: 0 auto;
+        }
+        
+        .featured-cards {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+        
+        .featured-card {
+            background: white;
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.08);
+            transition: all 0.3s ease;
+        }
+        
+        .featured-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+        }
+        
+        .featured-img {
+            height: 180px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 4rem;
+            color: white;
+        }
+        
+        .featured-card:nth-child(1) .featured-img { background: linear-gradient(120deg, var(--primary), var(--primary-light)); }
+        .featured-card:nth-child(2) .featured-img { background: linear-gradient(120deg, var(--secondary), #8a2be2); }
+        .featured-card:nth-child(3) .featured-img { background: linear-gradient(120deg, var(--success), #06d6a0); }
+        
+        .featured-content {
+            padding: 1.8rem;
+        }
+        
+        .featured-content h3 {
+            font-size: 1.5rem;
+            margin-bottom: 0.8rem;
+        }
+        
+        .featured-card:nth-child(1) .featured-content h3 { color: var(--primary); }
+        .featured-card:nth-child(2) .featured-content h3 { color: var(--secondary); }
+        .featured-card:nth-child(3) .featured-content h3 { color: var(--success); }
+        
+        .featured-content p {
+            color: var(--text-light);
+            margin-bottom: 1.2rem;
+            line-height: 1.6;
+        }
+        
+        .featured-link {
+            display: inline-flex;
+            align-items: center;
+            font-weight: 600;
+            text-decoration: none;
+            gap: 8px;
+            transition: all 0.3s ease;
+        }
+        
+        .featured-card:nth-child(1) .featured-link { color: var(--primary); }
+        .featured-card:nth-child(2) .featured-link { color: var(--secondary); }
+        .featured-card:nth-child(3) .featured-link { color: var(--success); }
+        
+        .featured-link:hover {
+            gap: 12px;
+        }
+        
+        /* Footer Styles */
+        footer {
+            background: var(--primary-dark);
+            color: white;
+            padding: 3rem 2rem 1.5rem;
+            text-align: center;
+        }
+        
+        .footer-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 2rem;
+            text-align: right;
+        }
+        
+        .footer-logo {
+            font-size: 2rem;
+            font-weight: 700;
+            margin-bottom: 1rem;
+            color: white;
+        }
+        
+        .footer-about p {
+            margin-bottom: 1.5rem;
+            line-height: 1.8;
+            opacity: 0.8;
+        }
+        
+        .footer-title {
+            font-size: 1.4rem;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+            position: relative;
+            padding-bottom: 0.5rem;
+        }
+        
+        .footer-title:after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            right: 0;
+            width: 50px;
+            height: 3px;
+            background: var(--accent);
+        }
+        
+        .footer-links {
+            list-style: none;
+        }
+        
+        .footer-links li {
+            margin-bottom: 0.8rem;
+        }
+        
+        .footer-links a {
+            color: rgba(255, 255, 255, 0.8);
+            text-decoration: none;
+            transition: all 0.3s ease;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .footer-links a:hover {
+            color: white;
+            transform: translateX(-5px);
         }
         
         .contact-bar {
             display: flex;
             justify-content: center;
             gap: 20px;
-            margin-top: 20px;
+            margin-top: 2rem;
             flex-wrap: wrap;
         }
         
@@ -325,466 +616,525 @@
             display: flex;
             align-items: center;
             gap: 8px;
-            color: var(--secondary-light);
+            color: white;
             text-decoration: none;
             transition: all 0.3s;
-            padding: 8px 15px;
+            padding: 0.6rem 1.2rem;
             border-radius: 50px;
-            background: rgba(0, 137, 123, 0.1);
+            background: rgba(255, 255, 255, 0.1);
         }
         
         .contact-link:hover {
-            color: white;
-            background: rgba(0, 137, 123, 0.3);
-            transform: translateY(-2px);
+            background: rgba(255, 255, 255, 0.2);
+            transform: translateY(-3px);
         }
         
-        .search-container {
-            max-width: 600px;
-            margin: 20px auto;
-            position: relative;
+        .copyright {
+            margin-top: 2.5rem;
+            padding-top: 1.5rem;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            color: rgba(255, 255, 255, 0.7);
+            font-size: 0.95rem;
         }
         
-        .search-box {
-            display: flex;
-        }
-        
-        .search-box input {
-            flex: 1;
-            padding: 14px 20px;
-            border: 2px solid var(--primary);
-            border-radius: 50px 0 0 50px;
-            font-size: 1.1rem;
-            outline: none;
-            background: rgba(26, 26, 46, 0.7);
-            color: white;
-            transition: border-color 0.3s;
-        }
-        
-        .search-box input:focus {
-            border-color: var(--accent);
-        }
-        
-        .search-box button {
-            background: var(--primary);
-            color: white;
-            border: none;
-            padding: 0 25px;
-            border-radius: 0 50px 50px 0;
-            cursor: pointer;
-            font-size: 1.1rem;
-            transition: background 0.3s;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-        
-        .search-box button:hover {
-            background: var(--accent);
-        }
-        
-        /* أنماط جديدة لنتائج البحث */
-        .search-results {
-            position: absolute;
-            width: 100%;
-            background: var(--card-bg);
-            border-radius: 0 0 12px 12px;
-            max-height: 400px;
-            overflow-y: auto;
-            z-index: 100;
-            box-shadow: 0 10px 20px rgba(0,0,0,0.3);
-            display: none;
-        }
-        
-        .search-result-item {
-            padding: 12px 20px;
-            border-bottom: 1px solid rgba(106, 27, 154, 0.3);
-            cursor: pointer;
-            transition: all 0.2s;
-        }
-        
-        .search-result-item:hover {
-            background: var(--card-hover);
-        }
-        
-        .doctor-name {
-            font-weight: bold;
-            color: var(--secondary-light);
-        }
-        
-        .doctor-specialty {
-            font-size: 0.9rem;
-            color: #aaa;
-        }
-        
-        .no-results {
-            padding: 15px;
-            text-align: center;
-            color: #aaa;
-        }
-        
-        @media (max-width: 768px) {
-            .container {
-                padding: 15px;
+        /* Responsive Design */
+        @media (max-width: 992px) {
+            h1 {
+                font-size: 2.4rem;
             }
             
-            h1 {
+            .section-title h2 {
                 font-size: 2rem;
             }
             
             .main-sections {
                 grid-template-columns: 1fr;
             }
+        }
+        
+        @media (max-width: 768px) {
+            .header-content {
+                padding: 0 1.5rem;
+            }
             
-            .sub-specialties {
+            h1 {
+                font-size: 2rem;
+            }
+            
+            .subtitle {
+                font-size: 1.1rem;
+            }
+            
+            .search-box input {
+                padding: 0.8rem 1.2rem;
+            }
+            
+            .search-box button {
+                padding: 0 1.5rem;
+            }
+            
+            .main-content {
+                padding: 2rem 1.5rem;
+            }
+            
+            .section-card {
+                padding: 1.5rem;
+            }
+            
+            .section-icon {
+                width: 60px;
+                height: 60px;
+                font-size: 1.8rem;
+            }
+            
+            .section-title-inner {
+                font-size: 1.5rem;
+            }
+            
+            .emergency-section {
+                padding: 1.8rem;
+            }
+            
+            .emergency-section h2 {
+                font-size: 1.8rem;
+            }
+            
+            .featured-section {
+                padding: 2rem;
+            }
+            
+            .footer-content {
                 grid-template-columns: 1fr;
+                text-align: center;
+            }
+            
+            .footer-title:after {
+                left: 50%;
+                transform: translateX(-50%);
+            }
+            
+            .footer-links a {
+                justify-content: center;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            h1 {
+                font-size: 1.8rem;
+            }
+            
+            .stat-card {
+                min-width: 130px;
+                padding: 1.2rem 1.5rem;
+            }
+            
+            .stat-card .number {
+                font-size: 1.8rem;
+            }
+            
+            .emergency-section p {
+                font-size: 1rem;
+            }
+            
+            .emergency-btn {
+                padding: 0.8rem 1.8rem;
+                font-size: 1.1rem;
             }
             
             .other-specialties {
                 grid-template-columns: 1fr;
             }
-            
-            .contact-bar {
-                flex-direction: column;
-                gap: 10px;
-            }
-            
-            .section-header {
-                flex-direction: column;
-                text-align: center;
-            }
-            
-            .section-icon {
-                margin-left: 0;
-                margin-bottom: 15px;
-            }
         }
         
-        .glow {
-            animation: glow 2s infinite alternate;
+        /* Animation Effects */
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
         }
         
-        @keyframes glow {
-            from {
-                box-shadow: 0 0 5px var(--primary), 0 0 10px var(--primary);
-            }
-            to {
-                box-shadow: 0 0 15px var(--accent), 0 0 20px var(--primary);
-            }
+        .animated {
+            animation: fadeIn 0.6s ease forwards;
         }
         
-        .pulse {
-            animation: pulse 2s infinite;
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+        .delay-5 { animation-delay: 0.5s; }
+        
+        /* Floating elements */
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-10px); }
+            100% { transform: translateY(0px); }
         }
         
-        @keyframes pulse {
-            0% { transform: scale(1); }
-            50% { transform: scale(1.05); }
-            100% { transform: scale(1); }
+        .floating {
+            animation: float 4s ease-in-out infinite;
         }
         
-        .decorative {
-            position: absolute;
-            width: 300px;
-            height: 300px;
-            border-radius: 50%;
-            background: radial-gradient(circle, var(--primary) 0%, transparent 70%);
-            opacity: 0.1;
-            z-index: -1;
-        }
-        
-        .decorative-1 {
-            top: 10%;
-            left: 10%;
-        }
-        
-        .decorative-2 {
-            bottom: 10%;
-            right: 10%;
-            background: radial-gradient(circle, var(--secondary) 0%, transparent 70%);
-        }
+        .floating-1 { animation-delay: 0s; }
+        .floating-2 { animation-delay: 1s; }
+        .floating-3 { animation-delay: 2s; }
     </style>
 </head>
 <body>
-    <div class="decorative decorative-1"></div>
-    <div class="decorative decorative-2"></div>
-    
-    <div class="container glow">
-        <header class="pulse">
-            <h1><i class="fas fa-heartbeat"></i> دليل التخصصات الطبية في محافظة قنا</h1>
-            <p class="subtitle">بوابة شاملة للعثور على أفضل الأطباء والمستشفيات والخدمات الطبية في محافظة قنا ومراكزها</p>
+    <div class="container">
+        <header>
+            <div class="header-decor"></div>
+            <div class="header-content">
+                <h1><i class="fas fa-heartbeat floating floating-1"></i> دليل التخصصات الطبية في محافظة قنا</h1>
+                <p class="subtitle">بوابة شاملة للعثور على أفضل الأطباء والمستشفيات والخدمات الطبية في محافظة قنا ومراكزها</p>
+                
+               
+                       
+                    </div>
+                    <div id="searchResults" class="search-results"></div>
+                </div>
+            </div>
         </header>
         
-        <div class="stats">
-            <div class="stat-card">
-                <div class="number">25</div>
-                <div class="label">تخصص طبي</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">150+</div>
-                <div class="label">طبيب متخصص</div>
-            </div>
-            <div class="stat-card">
-                <div class="number">40+</div>
-                <div class="label">مركز طبي</div>
-            </div>
-        </div>
-        
-        <div class="main-sections">
-            <!-- قسم الجراحة -->
-            <div class="section-card">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-scalpel"></i>
-                    </div>
-                    <h2 class="section-title">قسم الجراحة</h2>
+        <div class="main-content">
+            <div class="stats">
+                <div class="stat-card animated">
+                    <div class="number">25</div>
+                    <div class="label">تخصص طبي</div>
                 </div>
-                
-                <div class="sub-specialties">
-                    <a href="surgery-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-user-md"></i>
-                        </div>
-                        <span class="specialty-name">الجراحة العامة</span>
-                    </a>
-                    
-                    <a href="Cardiothoracic-Surgery-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <span class="specialty-name">جراحة الصدر والقلب</span>
-                    </a>
-                    
-                    <a href="Pediatric-Surgery-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-child"></i>
-                        </div>
-                        <span class="specialty-name">جراحة الأطفال</span>
-                    </a>
-                    
-                    <a href="Plastic-Surgery-Burn-Surgery-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-hand-holding-medical"></i>
-                        </div>
-                        <span class="specialty-name">جراحة التجميل والحروق</span>
-                    </a>
-                    
-                    <a href="Vascular-Surgery-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <span class="specialty-name">جراحة الأوعية الدموية</span>
-                    </a>
+                <div class="stat-card animated delay-1">
+                    <div class="number">150+</div>
+                    <div class="label">طبيب متخصص</div>
+                </div>
+                <div class="stat-card animated delay-2">
+                    <div class="number">40+</div>
+                    <div class="label">مركز طبي</div>
                 </div>
             </div>
             
-            <!-- قسم الباطنة - مع إضافة تخصص القلب والأوعية الدموية -->
-            <div class="section-card">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-stethoscope"></i>
-                    </div>
-                    <h2 class="section-title">قسم الباطنة</h2>
-                </div>
-                
-                <div class="sub-specialties">
-                    <a href="internal-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-lungs"></i>
-                        </div>
-                        <span class="specialty-name">الباطنة العامة</span>
-                    </a>
-                    
-                    <a href="internal-heart-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-heartbeat"></i>
-                        </div>
-                        <span class="specialty-name">القلب والأوعية الدموية</span>
-                    </a>
-                    
-                    <a href="internal-nephrology-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-kidneys"></i>
-                        </div>
-                        <span class="specialty-name">أمراض الكلى</span>
-                    </a>
-                    
-                    <a href="im-gid-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-stomach"></i>
-                        </div>
-                        <span class="specialty-name">أمراض الجهاز الهضمي</span>
-                    </a>
-                </div>
+    
+            
+            <!-- Main Sections -->
+            <div class="section-title">
+                <h2>الأقسام الطبية الرئيسية</h2>
             </div>
             
-            <!-- قسم المخ والأعصاب والطب النفسي -->
-            <div class="section-card">
-                <div class="section-header">
-                    <div class="section-icon">
-                        <i class="fas fa-brain"></i>
+            <div class="main-sections">
+                <!-- قسم الجراحة -->
+                <div class="section-card animated delay-1">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-scalpel"></i>
+                        </div>
+                        <h2 class="section-title-inner">قسم الجراحة</h2>
                     </div>
-                    <h2 class="section-title">المخ والأعصاب والطب النفسي</h2>
+                    
+                    <div class="sub-specialties">
+                        <a href="surgery-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-user-md"></i>
+                            </div>
+                            <span class="specialty-name">الجراحة العامة</span>
+                        </a>
+                        
+                        <a href="Cardiothoracic-Surgery-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <span class="specialty-name">جراحة الصدر والقلب</span>
+                        </a>
+                        
+                        <a href="Pediatric-Surgery-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-child"></i>
+                            </div>
+                            <span class="specialty-name">جراحة الأطفال</span>
+                        </a>
+                        
+                        <a href="Plastic-Surgery-Burn-Surgery-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-hand-holding-medical"></i>
+                            </div>
+                            <span class="specialty-name">جراحة التجميل والحروق</span>
+                        </a>
+                        
+                        <a href="Vascular-Surgery-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <span class="specialty-name">جراحة الأوعية الدموية</span>
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="sub-specialties">
-                    <a href="neurology-psychiatry-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
-                            <i class="fas fa-head-side-virus"></i>
+                <!-- قسم الباطنة -->
+                <div class="section-card animated delay-2">
+                    <div class="section-header">
+                        <div class="section-icon">
+                            <i class="fas fa-stethoscope"></i>
                         </div>
-                        <span class="specialty-name">المخ والأعصاب والطب النفسي</span>
-                    </a>
+                        <h2 class="section-title-inner">قسم الباطنة</h2>
+                    </div>
                     
-                    <a href="neurosurgery-Qena.html" class="specialty-card">
-                        <div class="specialty-icon">
+                    <div class="sub-specialties">
+                        <a href="internal-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-lungs"></i>
+                            </div>
+                            <span class="specialty-name">الباطنة العامة</span>
+                        </a>
+                        
+                        <a href="internal-heart-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-heartbeat"></i>
+                            </div>
+                            <span class="specialty-name">القلب والأوعية الدموية</span>
+                        </a>
+                        
+                        <a href="internal-nephrology-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-kidneys"></i>
+                            </div>
+                            <span class="specialty-name">أمراض الكلى</span>
+                        </a>
+                        
+                        <a href="im-gid-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-stomach"></i>
+                            </div>
+                            <span class="specialty-name">أمراض الجهاز الهضمي</span>
+                        </a>
+                    </div>
+                </div>
+                
+                <!-- قسم المخ والأعصاب والطب النفسي -->
+                <div class="section-card animated delay-3">
+                    <div class="section-header">
+                        <div class="section-icon">
                             <i class="fas fa-brain"></i>
                         </div>
-                        <span class="specialty-name">جراحة المخ والأعصاب</span>
-                    </a>
+                        <h2 class="section-title-inner">المخ والأعصاب والطب النفسي</h2>
+                    </div>
+                    
+                    <div class="sub-specialties">
+                        <a href="neurology-psychiatry-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-head-side-virus"></i>
+                            </div>
+                            <span class="specialty-name">المخ والأعصاب والطب النفسي</span>
+                        </a>
+                        
+                        <a href="neurosurgery-Qena.html" class="specialty-card">
+                            <div class="specialty-icon">
+                                <i class="fas fa-brain"></i>
+                            </div>
+                            <span class="specialty-name">جراحة المخ والأعصاب</span>
+                        </a>
+                    </div>
                 </div>
             </div>
-        </div>
-        
-        <h2 style="text-align: center; margin: 40px 0 20px; color: var(--secondary-light);">التخصصات الطبية الأخرى</h2>
-        <div class="other-specialties">
-            <a href="bones-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-bone"></i>
-                </div>
-                <h3 class="other-name">العظام</h3>
-            </a>
+    
+            </div>
             
-            <a href="chest-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-lungs"></i>
-                </div>
-                <h3 class="other-name">الصدر</h3>
-            </a>
+            <!-- Other Specialties -->
+            <div class="section-title">
+                <h2>التخصصات الطبية الأخرى</h2>
+            </div>
             
-            <a href="children-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-baby"></i>
-                </div>
-                <h3 class="other-name">أطفال</h3>
-            </a>
-            
-            <a href="derma-doctors-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-allergies"></i>
-                </div>
-                <h3 class="other-name">الجلدية</h3>
-            </a>
-            
-            <a href="endocrinology-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-vial"></i>
-                </div>
-                <h3 class="other-name">الغدد الصماء</h3>
-            </a>
-            
-            <a href="ent-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-ear"></i>
-                </div>
-                <h3 class="other-name">الأنف والأذن والحنجرة</h3>
-            </a>
-            
-            <a href="eyes-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <h3 class="other-name">العيون</h3>
-            </a>
-            
-            <a href="rheumatology-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <h3 class="other-name">الروماتيزم والمناعة</h3>
-            </a>
-
-            <a href="nutrition-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-eye"></i>
-                </div>
-                <h3 class="other-name"> التغذية العلاجية</h3>
+            <div class="other-specialties">
+                <a href="bones-Qena.html" class="other-card animated delay-1">
+                    <div class="other-icon">
+                        <i class="fas fa-bone"></i>
+                    </div>
+                    <h3 class="other-name">العظام</h3>
+                    <p class="other-desc">علاج كسور وإصابات العظام والمفاصل</p>
+                </a>
                 
-            <a href="hematology-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-tint"></i>
-                </div>
-                <h3 class="other-name">الدم</h3>
-            </a>
-            
-            <a href="labs-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-flask"></i>
-                </div>
-                <h3 class="other-name">المعامل</h3>
-            </a>
-            
-            <a href="oncology-nuclear-medicine-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-radiation"></i>
-                </div>
-                <h3 class="other-name">الأورام والطب النووي</h3>
-            </a>
-            
-             <a href="dentist-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-radiation"></i>
-                </div>
-                <h3 class="other-name">    الفم والأسنان  
- </h3>
+                <a href="chest-Qena.html" class="other-card animated delay-2">
+                    <div class="other-icon">
+                        <i class="fas fa-lungs"></i>
+                    </div>
+                    <h3 class="other-name">الصدر</h3>
+                    <p class="other-desc">أمراض الجهاز التنفسي والرئتين</p>
+                </a>
+                
+                <a href="children-Qena.html" class="other-card animated delay-3">
+                    <div class="other-icon">
+                        <i class="fas fa-baby"></i>
+                    </div>
+                    <h3 class="other-name">أطفال</h3>
+                    <p class="other-desc">رعاية صحية متكاملة للأطفال</p>
+                </a>
+                
+                <a href="derma-doctors-Qena.html" class="other-card animated delay-4">
+                    <div class="other-icon">
+                        <i class="fas fa-allergies"></i>
+                    </div>
+                    <h3 class="other-name">الجلدية</h3>
+                    <p class="other-desc">علاج الأمراض الجلدية والتجميل</p>
+                </a>
+                
+                <a href="endocrinology-Qena.html" class="other-card animated delay-5">
+                    <div class="other-icon">
+                        <i class="fas fa-vial"></i>
+                    </div>
+                    <h3 class="other-name">الغدد الصماء</h3>
+                    <p class="other-desc">اضطرابات الهرمونات والسكري</p>
+                </a>
+                
+                <a href="ent-Qena.html" class="other-card animated delay-1">
+                    <div class="other-icon">
+                        <i class="fas fa-ear"></i>
+                    </div>
+                    <h3 class="other-name">الأنف والأذن</h3>
+                    <p class="other-desc">تشخيص وعلاج أمراض الأنف والأذن</p>
+                </a>
+                
+                <a href="eyes-Qena.html" class="other-card animated delay-2">
+                    <div class="other-icon">
+                        <i class="fas fa-eye"></i>
+                    </div>
+                    <h3 class="other-name">العيون</h3>
+                    <p class="other-desc">جراحات العيون وتصحيح النظر</p>
+                </a>
+                
+                <a href="rheumatology-Qena.html" class="other-card animated delay-3">
+                    <div class="other-icon">
+                        <i class="fas fa-joint"></i>
+                    </div>
+                    <h3 class="other-name">الروماتيزم</h3>
+                    <p class="other-desc">علاج أمراض المفاصل والمناعة</p>
+                </a>
 
-            <a href="pharmacies-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-prescription-bottle-alt"></i>
-                </div>
-                <h3 class="other-name">الصيدليات</h3>
-            </a>
-            
-            <a href="physiotherapy-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-wheelchair"></i>
-                </div>
-                <h3 class="other-name">العلاج الطبيعي</h3>
-            </a>
-            
-            <a href="radiology-centers-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-clinic-medical"></i>
-                </div>
-                <h3 class="other-name">مراكز الأشعة</h3>
-            </a>
-            
-            <a href="medical-specialties-hospitals.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-x-ray"></i>
-                </div>
-                <h3 class="other-name">التخصصات الطبية والمستشفيات</h3>
-            </a>
-            
-            <a href="urology-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-procedures"></i>
-                </div>
-                <h3 class="other-name">المسالك البولية</h3>
-            </a>
-            
-            <a href="women-Qena.html" class="other-card">
-                <div class="other-icon">
-                    <i class="fas fa-female"></i>
-                </div>
-                <h3 class="other-name">النساء والتوليد</h3>
-            </a>
+                <a href="nutrition-Qena.html" class="other-card animated delay-4">
+                    <div class="other-icon">
+                        <i class="fas fa-apple-alt"></i>
+                    </div>
+                    <h3 class="other-name">التغذية العلاجية</h3>
+                    <p class="other-desc">برامج غذائية لعلاج الأمراض</p>
+                </a>
+                
+                <a href="hematology-Qena.html" class="other-card animated delay-5">
+                    <div class="other-icon">
+                        <i class="fas fa-tint"></i>
+                    </div>
+                    <h3 class="other-name">الدم</h3>
+                    <p class="other-desc">أمراض الدم والمناعة</p>
+                </a>
+                
+                <a href="labs-Qena.html" class="other-card animated delay-1">
+                    <div class="other-icon">
+                        <i class="fas fa-flask"></i>
+                    </div>
+                    <h3 class="other-name">المعامل</h3>
+                    <p class="other-desc">تحاليل طبية دقيقة</p>
+                </a>
+                
+                <a href="oncology-nuclear-medicine-Qena.html" class="other-card animated delay-2">
+                    <div class="other-icon">
+                        <i class="fas fa-radiation"></i>
+                    </div>
+                    <h3 class="other-name">الأورام</h3>
+                    <p class="other-desc">علاج الأورام والطب النووي</p>
+                </a>
+                
+                <a href="dentist-Qena.html" class="other-card animated delay-3">
+                    <div class="other-icon">
+                        <i class="fas fa-tooth"></i>
+                    </div>
+                    <h3 class="other-name">الفم والأسنان</h3>
+                    <p class="other-desc">علاج وتجميل الأسنان</p>
+                </a>
+
+                <a href="pharmacies-Qena.html" class="other-card animated delay-4">
+                    <div class="other-icon">
+                        <i class="fas fa-prescription-bottle-alt"></i>
+                    </div>
+                    <h3 class="other-name">الصيدليات</h3>
+                    <p class="other-desc">صيدليات متاحة 24 ساعة</p>
+                </a>
+                
+                <a href="physiotherapy-Qena.html" class="other-card animated delay-5">
+                    <div class="other-icon">
+                        <i class="fas fa-wheelchair"></i>
+                    </div>
+                    <h3 class="other-name">العلاج الطبيعي</h3>
+                    <p class="other-desc">إعادة تأهيل وعلاج طبيعي</p>
+                </a>
+                
+                <a href="radiology-centers-Qena.html" class="other-card animated delay-1">
+                    <div class="other-icon">
+                        <i class="fas fa-clinic-medical"></i>
+                    </div>
+                    <h3 class="other-name">مراكز الأشعة</h3>
+                    <p class="other-desc">أشعة متقدمة وتشخيص دقيق</p>
+                </a>
+                
+                <a href="medical-specialties-hospitals.html" class="other-card animated delay-2">
+                    <div class="other-icon">
+                        <i class="fas fa-hospital"></i>
+                    </div>
+                    <h3 class="other-name">المستشفيات</h3>
+                    <p class="other-desc">أفضل المستشفيات في محافظة قنا</p>
+                </a>
+                
+                <a href="urology-Qena.html" class="other-card animated delay-3">
+                    <div class="other-icon">
+                        <i class="fas fa-procedures"></i>
+                    </div>
+                    <h3 class="other-name">المسالك البولية</h3>
+                    <p class="other-desc">علاج أمراض الجهاز البولي</p>
+                </a>
+                
+                <a href="women-Qena.html" class="other-card animated delay-4">
+                    <div class="other-icon">
+                        <i class="fas fa-female"></i>
+                    </div>
+                    <h3 class="other-name">النساء والتوليد</h3>
+                    <p class="other-desc">رعاية الحوامل وتوليد</p>
+                </a>
+            </div>
         </div>
         
         <footer>
-            <p>© 2025 دليل التخصصات الطبية في محافظة قنا | تم التحديث في يناير 2025</p>
-            <p>جميع المعلومات مقدمة كمرجع عام، يُرجى التأكد من دقة البيانات قبل الاستخدام</p>
+            <div class="footer-content">
+                <div class="footer-about">
+                    <div class="footer-logo">
+                        <i class="fas fa-heartbeat"></i> دليل قنا الطبي
+                    </div>
+                    <p>منصة شاملة تهدف لتسهيل الوصول للخدمات الطبية في محافظة قنا ومراكزها، وتوفير معلومات دقيقة عن التخصصات الطبية والأطباء والمستشفيات.</p>
+                    <div class="contact-bar">
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-facebook-f"></i>
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-twitter"></i>
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-instagram"></i>
+                        </a>
+                        <a href="#" class="contact-link">
+                            <i class="fab fa-youtube"></i>
+                        </a>
+                    </div>
+                </div>
+                
+                <div class="footer-links-section">
+                    <h3 class="footer-title">روابط سريعة</h3>
+                    <ul class="footer-links">
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> الصفحة الرئيسية</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> عن الدليل</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> المستشفيات</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> مراكز الأشعة</a></li>
+                        <li><a href="#"><i class="fas fa-arrow-left"></i> المعامل</a></li>
+                    </ul>
+                </div>
+                
+              
+                </div>
+            </div>
             
-       
+            <div class="copyright">
+                <p>© 2025 دليل التخصصات الطبية في محافظة قنا | تم التحديث في يناير 2025</p>
+                <p>جميع المعلومات مقدمة كمرجع عام، يُرجى التأكد من دقة البيانات قبل الاستخدام</p>
             </div>
         </footer>
     </div>
@@ -853,11 +1203,6 @@
 
         // البحث عند الضغط على زر البحث
         searchBtn.addEventListener('click', function() {
-            this.style.backgroundColor = 'var(--accent)';
-            setTimeout(() => {
-                this.style.backgroundColor = 'var(--primary)';
-            }, 300);
-            
             const searchTerm = searchInput.value.trim().toLowerCase();
             if (searchTerm.length > 0) {
                 const firstDoctor = doctors.find(doctor => 
@@ -879,6 +1224,21 @@
             card.addEventListener('mouseleave', () => {
                 card.style.transform = 'scale(1)';
             });
+        });
+        
+        // إضافة تأثيرات الظهور التدريجي
+        document.addEventListener('DOMContentLoaded', function() {
+            const animatedElements = document.querySelectorAll('.animated');
+            
+            animatedElements.forEach(el => {
+                el.style.opacity = '0';
+            });
+            
+            setTimeout(() => {
+                animatedElements.forEach(el => {
+                    el.style.opacity = '1';
+                });
+            }, 300);
         });
     </script>
 </body>
